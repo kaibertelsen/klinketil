@@ -31,6 +31,13 @@ function createbodystring(fieldnames,fieldvalues){
   return (bodystring);
   }
 
+function makeupdatebodystring(data){
+  // lag bodystrin for å oppdatere webflowid
+  let bodystring="{"+'"name"'+":"+'"'+data.name+'"'+","+'"webflow"'+":"+'"'+data._id+'"'+"}";
+  return (bodystring);
+  }
+
+
 function apireturnnew (data,fid){
   //retur fra opprettelsen av webflow item
   let bodystring = makeupdatebodystring(data);
