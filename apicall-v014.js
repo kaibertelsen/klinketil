@@ -102,7 +102,13 @@ if(type == "PATCH"){
      }
    }else if (type=="DELETE"){
        if(db=="webflow"){
-       
+       //webflow
+     let response = await fetch(`https://webflow-woad.vercel.app/api/item?collectionId=${collectionId}&itemId=${itemId}&token=${token}`, {
+      method: "DELETE"
+    });
+
+    let data = await response.json();
+    apireturnnew (data,fid);
        }
    }
 
