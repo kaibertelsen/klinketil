@@ -100,6 +100,10 @@ if(type == "PATCH"){
    let data = await response.json();
    apireturn (data,fid);
      }
+   }else if (type=="DELETE"){
+       if(db=="webflow"){
+       
+       }
    }
 
 }
