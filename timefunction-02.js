@@ -6,9 +6,6 @@ setTimeout(doSomething, delay);
 		}
 }
 
-//summerer listen ved oppstart
-sumerlist();
-
 
 function sumerlist(){
 //summer minutter
