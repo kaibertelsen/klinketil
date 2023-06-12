@@ -1,3 +1,14 @@
+var Webflow = Webflow || [];
+Webflow.push(function () {
+	document.getElementsByClassName('date').flatpickr({
+  	enableTime: false,
+    dateFormat: 'Y-m-d'
+  });
+});
+
+
+
+
 function sumtimerdelay(delay){
 setTimeout(doSomething, delay);
 		function doSomething() {
