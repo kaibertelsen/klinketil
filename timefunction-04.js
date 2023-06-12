@@ -97,3 +97,18 @@ var layoutitem = findlayoutitem(layoutarray,age);
 
 
 }
+
+
+function hideelementdelay(element,delay){
+setTimeout(doSomething, delay);
+		function doSomething() {
+    element.style.display = "none";
+		}
+} 
+
+function showelementdelay(element,delay,type){
+setTimeout(doSomething, delay);
+		function doSomething() {
+   element.style.display = type;
+		}
+}
