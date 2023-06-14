@@ -66,7 +66,7 @@ document.getElementById("registreringsview").style.display = "none"
 
 function setgoalmessage(){
 //sjekke om denne layouten skal ha denne meldingen
-var layoutitem = findlayoutitem(layoutarray,age);
+var layoutitem = findlayoutitem(bdate);
 	if (layoutitem[14]){
 	//denne bruker skal ha goal lable
 	var timertotalmnd=sumhourminutt(timermnd,minuttermnd);
