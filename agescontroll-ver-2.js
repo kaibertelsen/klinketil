@@ -90,3 +90,12 @@ var yearofflimit = bornyear+maxyear;
     }
 }
 
+//regne ut diferansen i år 
+function findage(date){
+var d1 = new Date(date); 
+var d2 = new Date(); 
+var diff = d2.getTime() - d1.getTime(); 
+  
+var daydiff = diff / ((1000 * 60 * 60 * 24)*365.25); 
+return daydiff;
+}
