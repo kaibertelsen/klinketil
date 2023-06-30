@@ -90,10 +90,18 @@ var layoutitem = findlayoutitem(bdate);
     
     		if (timertotalmnd>=xgoal1*2){
     		//Det er 200% over første goal
-    		goalnr = "2x";
-   		 	goalheaderlable = layoutitem[17];
-    		goalmassagelable = layoutitem[18];
+    		  goalnr = "2x";
+   		  goalheaderlable = layoutitem[17];
+    		  goalmassagelable = layoutitem[18];
     		}
+
+		if (timertotalmnd>=xgoal1*3){
+    		//Det er 300% over første goal
+    		  goalnr = "3x";
+   		  goalheaderlable = layoutitem[17];
+    		  goalmassagelable = layoutitem[18];
+    		}
+			
 
 		document.getElementById("goalnr").innerHTML = goalnr;
 		document.getElementById("goalheaderlable").innerHTML = goalheaderlable;
