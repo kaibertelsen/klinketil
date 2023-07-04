@@ -41,7 +41,7 @@ function makeupdatebodystring(data){
 function apireturnnew (data,fid){
   //retur fra opprettelsen av webflow item
   let bodystring = makeupdatebodystring(data);
-  callapi("",collectionId,data._id,bodystring,"PATCH","webflow",fid);
+  callapi("",data._cid,data._id,bodystring,"PATCH","webflow",fid);
 }
 
 async function callapi(baseId,collectionId,itemId,bodystring,type,db,fid){
@@ -108,7 +108,7 @@ if(type == "PATCH"){
     });
 
     let data = await response.json();
-    apireturnnew (data,fid);
+    apireturn (data,fid);
        }
    }
 
