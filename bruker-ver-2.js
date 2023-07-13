@@ -85,9 +85,9 @@ document.getElementById("prosjektlist-select").addEventListener("change", (e) =>
    kommentarinput.value =  "";
    kommentarinput.style.display = "Block"
    document.getElementById("valuta").value = "";
-   timerinput.value = "";
+   //timerinput.value = "";
    timerinput.style.display = "Block";
-   minuttinput.value = "";
+   //minuttinput.value = "";
    minuttinput.style.display = "Block";
    }
 });
