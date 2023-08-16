@@ -40,6 +40,13 @@ timer = timer+mtimer;
 document.getElementById("sumvalue").innerHTML = mvalue;
 document.getElementById("sumtimer").innerHTML = timer;
 document.getElementById("summinutter").innerHTML = minutter;
+
+if(mvalue ==0){
+//skjul verdiboxsen 
+document.getElementById("valuebox").style.display="none";
+}
+
+	
 }
 
 function sumvalueclass(classname){
