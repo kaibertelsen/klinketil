@@ -20,7 +20,7 @@ setTimeout(doSomething, delay);
 
 function sumerlist(){
 //summer minutter
-var mvalue = 	sumvalueclass("value");
+var mvalue = sumvalueclass("valuex");
 var minutter = sumvalueclass("minutter");
 var mtimer = 0;
 
