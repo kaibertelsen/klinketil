@@ -41,10 +41,12 @@ document.getElementById("sumvalue").innerHTML = mvalue;
 document.getElementById("sumtimer").innerHTML = timer;
 document.getElementById("summinutter").innerHTML = minutter;
 
-if(mvalue ==0){
-//skjul verdiboxsen 
-document.getElementById("valuebox").style.display="none";
-}
+	if(mvalue ==0){
+	//skjul verdiboxsen 
+	document.getElementById("valuebox").style.display="none";
+	}else{
+	document.getElementById("valuebox").style.display="Block";
+	}
 
 	
 }
