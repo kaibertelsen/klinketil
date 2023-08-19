@@ -111,7 +111,7 @@ if(type == "PATCH"){
          
        }else if(db=="airtable"){
 
-    let response = await fetch(`https://expoapi-zeta.vercel.app/api/row?baseId=${baseId}&collectionId=${tableId}&rowId=${itemId}&token=${token}`, {
+    let response = await fetch(`https://expoapi-zeta.vercel.app/api/row?baseId=${baseId}&tableId=${collectionId}&rowId=${itemId}&token=${token}`, {
       method: "DELETE"
     });
     let data = await response.json();
