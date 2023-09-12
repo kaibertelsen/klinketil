@@ -51,35 +51,20 @@ document.getElementById("prosjektlist-select").addEventListener("change", (e) =>
     var minutter = "";
       //sjekke verdien på index 3
    if (prosjekt[3]=="vipps"){ 
-   var timertotalmnd=sumhourminutt(timermnd,minuttermnd)
-		  //hvis en infotekts
-		   var sumbx = 0;
- 			 var value = 0;
-  		if (goal1>timertotalmnd){
- 		  sumbx = goal1-timertotalmnd;
-		  value = sumbx*200;
-      value = round(value, 2);
-      gotogoal = value;
-      sumbx = round(sumbx, 2);
-      var timearray = extracthourminutt(sumbx);
-      timer= timearray[0];
-      minutter = round(timearray[1], 1);
-      infotekst = "Du er "+timer+"t og "+minutter+"m fra å være 100% denne mnd. ("+goal1+"t). Om du ønsker å komme i 100% så kan du skrive inn "+value+"kr i beløpsfeltet. "+prosjekt[4];
-		  }else{
-		  infotekst = "Du er alt i 100%, men om du ønsker kan du legge inn et         beløp."
-      document.getElementById("gotobutton").style.display = "none";
-		  }
-   
+      infotekst = "Tast inn ønsket beløp.";
+		
+   document.getElementById("regheadertext").innerHTML = "Registrer beløp";
    document.getElementById("vippstext").innerHTML =  infotekst;
-   kommentarinput.value =  prosjekt[4];
+   //kommentarinput.value =  prosjekt[4];
    kommentarinput.style.display = "none"
    document.getElementById("prevalue").style.display = "Block";
    document.getElementById("pretimer").style.display = "none";
-   timerinput.value = timer;
+   //timerinput.value = timer;
    timerinput.style.display = "none";
-   minuttinput.value = minutter;
+   //minuttinput.value = minutter;
    minuttinput.style.display = "none";
    }else{
+   document.getElementById("regheadertext").innerHTML = "Registrer timer";
    document.getElementById("prevalue").style.display = "none";
    document.getElementById("pretimer").style.display = "Block";
    kommentarinput.value =  "";
