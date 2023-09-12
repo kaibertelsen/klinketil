@@ -68,7 +68,7 @@ var yearnr = d.getFullYear();
 //sett timer til i dag
 document.getElementById("dato").value = yearnr+"-"+montnr+"-"+daynr;
 thisDate = new Date();
-document.getElementById("statusdennemnd").innerHTML = findmontname(thisDate.getMonth());
+document.getElementById("statusdennemnd").innerHTML = findmontnameshort(thisDate.getMonth());
 
 function visregistrering(){
 document.getElementById("waitingdiv").style.display = "Block"
