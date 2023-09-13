@@ -61,10 +61,10 @@ for (var i = 0; i < elements.length; i++) {
 return value;
 }
 
-const d = new Date();
-var daynr = d.getDate();
-var montnr= d.getMonth()+1;
-var yearnr = d.getFullYear();
+const thisday = new Date();
+var daynr = thisday.getDate();
+var montnr= thisday.getMonth()+1;
+var yearnr = thisday.getFullYear();
 
 //sett timer til i dag
 document.getElementById("dato").value = yearnr+"-"+montnr+"-"+daynr;
