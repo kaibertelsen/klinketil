@@ -58,8 +58,8 @@ document.getElementById("prosjektlist-select").addEventListener("change", (e) =>
 		
    document.getElementById("regheadertext").innerHTML = "Registrer beløp";
    document.getElementById("vippstext").innerHTML =  infotekst;
-   kommentarinput.value =  prosjekt[4];
-   kommentarinput.style.display = "none"
+   kommentarinput.value =  "";
+   kommentarinput.style.display = "Block"
    document.getElementById("prevalue").style.display = "Block";
    document.getElementById("pretimer").style.display = "none";
    //timerinput.value = timer;
