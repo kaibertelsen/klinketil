@@ -60,7 +60,7 @@ for (var i = 0; i < elements.length; i++) {
 return value;
 }
 
-d = new Date();
+const d = new Date();
 var daynr = d.getDate();
 var montnr= d.getMonth()+1;
 var yearnr = d.getFullYear();
