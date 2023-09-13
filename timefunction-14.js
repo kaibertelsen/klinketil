@@ -1,3 +1,4 @@
+/*
 var Webflow = Webflow || [];
 Webflow.push(function () {
 	document.getElementsByClassName('date').flatpickr({
@@ -5,7 +6,7 @@ Webflow.push(function () {
     dateFormat: 'Y-m-d'
   });
 });
-
+*/
 
 
 
