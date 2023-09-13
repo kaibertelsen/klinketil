@@ -51,7 +51,10 @@ document.getElementById("prosjektlist-select").addEventListener("change", (e) =>
     var minutter = "";
       //sjekke verdien på index 3
    if (prosjekt[3]=="vipps"){ 
-      infotekst = "Tast inn ønsket beløp i hele kroner";
+	   //Sette timer og minutter til 0
+	   document.getElementById("timer").value = 0;
+	   document.getElementById("minutter").value = 0;
+      	   infotekst = "Tast inn ønsket beløp i hele kroner";
 		
    document.getElementById("regheadertext").innerHTML = "Registrer beløp";
    document.getElementById("vippstext").innerHTML =  infotekst;
