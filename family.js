@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Funksjonen som skal kjøre etter at siden er ferdig lastet
     console.log('Siden er ferdig lastet!');
+    startFamily();
 });
 
 function startFamily(){
