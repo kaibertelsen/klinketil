@@ -4,16 +4,17 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function startFamily(){
-
-   
     let UserObject = getUserObject();
     if(UserObject){
     //finne familieid
     //hente Familie fra server
         let familyId = UserObject.adminfamily[0];
-
+        GETairtable("apphvNDlBgA5T08CM","tblHWNnQmkLb1xpZt",familyId,"responsfamily")
     }
+}
 
+function responsfamily(data){
+    console.log(rawdatacleaner(data))
 }
 
 
@@ -29,4 +30,13 @@ function getUserObject(){
     }else{
     return false;   
     }
+}
+
+function ruteresponse(data,id){
+    if(id == "responsfamily"){
+
+        responsfamily(data);
+    }
+
+
 }
