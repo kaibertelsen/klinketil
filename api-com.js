@@ -91,7 +91,6 @@ async function GETairtable(baseId,tableId,itemId,id){
             let data = await response.json();
             apireturn({success: true, data: data, id: id});
         }
-        
 }
     
 function apireturn(response){
