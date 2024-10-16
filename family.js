@@ -47,12 +47,14 @@ let body = airtablebodylistAND(
         klientid:klientid
     }
     );
-Getlistairtable(baseId,tableId,body,id);
+Getlistairtable("apphvNDlBgA5T08CM","",body,"responssubscription");
 
 
 }
 
-
+function responssubscription(data){
+console.log(data);
+}
 
 
 function getUserObject(){
@@ -70,9 +72,8 @@ function getUserObject(){
 
 function ruteresponse(data,id){
     if(id == "responsfamily"){
-
         responsfamily(data);
+    }else if(id == "responssubscription"){
+        responssubscription(data);
     }
-
-
 }
