@@ -17,7 +17,7 @@ function startFamily(){
 function responsfamily(data){
   let members =  makeMemberArray(data.fields);
   //hente abonnement på klient
-  getSubscription(getUserObject().klientid);
+  getSubscription(getUserObject().aklient[0]);
   console.log(members);
 }
 
