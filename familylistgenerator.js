@@ -6,7 +6,7 @@ function makeFamilyList(members){
     for (let member of members) {
         // Lag en kopi av elementet
         const rowelement = nodeelement.cloneNode(true);
-        rowelement.id = "member"+item.sport;
+        rowelement.id = "member"+item.airtable;
 
         const membername = rowelement.querySelector(".membername");
         membername.textContent = item.membername;
