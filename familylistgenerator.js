@@ -16,7 +16,29 @@ function makeFamilyList(members){
 
 
         //lage subscription
+        const subscriptionlist = rowelement.querySelector(".subscriptionlist");
+        const subsctiptionrownode = subscriptionlist.querySelector(".subsctiptionrow");
 
-        list.appendChild(rowelement);
+            for(let sub of member.subscription){
+                const rowsub = subsctiptionrownode.cloneNode(true); 
+
+                const subname = rowsub.querySelector(".subscriptionname");
+                subname.textContent = sub.name;
+
+                const subdescription = rowsub.querySelector(".subscriptiondescription");
+                if(sub?.description){
+                    subdescription.textContent = sub.description;
+                }else{
+                    subdescription.textContent = "-";;
+                }
+                
+                const subvalue = rowsub.querySelector(".subscriptionvalue");
+                subvalue.textContent = sub.value;
+
+                subscriptionlist.appendChild(rowsub);
+            }
+            subsctiptionrownode.remove();
+
+            
     }
 }
