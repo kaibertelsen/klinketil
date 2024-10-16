@@ -6,13 +6,13 @@ function makeFamilyList(members){
     for (let member of members) {
         // Lag en kopi av elementet
         const rowelement = nodeelement.cloneNode(true);
-        rowelement.id = "member"+item.airtable;
+        rowelement.id = "member"+member.airtable;
 
         const membername = rowelement.querySelector(".membername");
-        membername.textContent = item.membername;
+        membername.textContent = member.membername;
 
         const memberage = rowelement.querySelector(".agelable");
-        memberage.textContent = item.memberage;
+        memberage.textContent = member.memberage;
 
 
         //lage subscription
