@@ -32,7 +32,7 @@ async function Getlistairtable(baseId,tableId,body,id){
       headers: {
         "Content-Type": "application/json",
       },
-      body: body
+      body: JSON.stringify(body)
     });
 
     if (!response.ok) {

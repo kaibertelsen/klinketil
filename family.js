@@ -16,6 +16,8 @@ function startFamily(){
 
 function responsfamily(data){
   let members =  makeMemberArray(data.fields);
+  //hente abonnement på klient
+  getSubscription(getUserObject().klientid);
   console.log(members);
 }
 
@@ -38,9 +40,17 @@ function makeMemberArray(familyObject){
     return members;
 }
 
+function getSubscription(klientid){
+//
+let body = airtablebodylistAND(
+    {
+        klientid:klientid
+    }
+    );
+Getlistairtable(baseId,tableId,body,id);
 
 
-
+}
 
 
 
