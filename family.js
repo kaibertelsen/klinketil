@@ -29,10 +29,10 @@ function makeMemberArray(familyObject){
 
     for (var i = 0;i<member.length;i++){
         members.push({
-            member:member[0],
-            membername:membername[0],
-            memberage:memberage[0],
-            memberemail:memberemail[0] 
+            member:member[i],
+            membername:membername[i],
+            memberage:memberage[i],
+            memberemail:memberemail[i],
         });
     }
     return members;
