@@ -14,12 +14,15 @@ function makeFamilyList(members){
         const memberage = rowelement.querySelector(".agelable");
         memberage.textContent = member.memberage;
 
+        
+        
+
         list.appendChild(rowelement);
 
         //lage subscription
         const subscriptionlist = rowelement.querySelector(".subscriptionlist");
         const subsctiptionrownode = subscriptionlist.querySelector(".subsctiptionrow");
-
+        let membervalue = 0;
             for(let sub of member.subscription){
                 const rowsub = subsctiptionrownode.cloneNode(true); 
 
@@ -34,12 +37,15 @@ function makeFamilyList(members){
                 }
                 
                 const subvalue = rowsub.querySelector(".subscriptionvalue");
-                subvalue.textContent = sub.value;
+                subvalue.textContent = sub.value+" kr/år";
+                membervalue = membervalue+sub.value;
 
                 subscriptionlist.appendChild(rowsub);
             }
             subsctiptionrownode.remove();
 
+        const membervaluelable = rowelement.querySelector(".membervaluelable");
+        membervaluelable.textContent = membervalue+" kr/år";
             
     }
 }
