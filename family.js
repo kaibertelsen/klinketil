@@ -20,7 +20,7 @@ function startFamily(){
 
 function responsfamily(data){
 
-document.getElementById("familynamelable").textContent = data.fields.name;
+document.getElementById("familynamelable").textContent = "Familien:"+data.fields.name;
 
   globalmembers =  makeMemberArray(data.fields);
   //hente abonnement på klient
