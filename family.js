@@ -22,11 +22,10 @@ function responsfamily(data){
 
   document.getElementById("familynamelable").textContent = "Familien:"+data.fields.name;
 
-  
   globalmembers =  makeMemberArray(data.fields);
   // Sorter arrayen etter 'memberage', størst først
   globalmembers.sort((a, b) => b.memberage - a.memberage);
-  
+
   //hente abonnement på klient
   getSubscription(getUserObject().aklient[0]);
 }

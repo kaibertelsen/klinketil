@@ -13,8 +13,15 @@ function makeFamilyList(members){
         const membername = rowelement.querySelector(".membername");
         membername.textContent = member.membername;
 
+        let agecontent = "";
+        //sjekke om dette er innlogget bruker
+        if(getUserObject().airtable == member.airtable){
+            agecontent = "("+member.memberage+")"+" Deg";
+        }else{
+            agecontent = "("+member.memberage+")";
+        }
         const memberage = rowelement.querySelector(".agelable");
-        memberage.textContent = "("+member.memberage+")";
+        memberage.textContent = agecontent;
 
         list.appendChild(rowelement);
 
