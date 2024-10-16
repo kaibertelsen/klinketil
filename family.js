@@ -1,3 +1,7 @@
+var globalsubscriptions;
+var globalmembers;
+
+
 document.addEventListener('DOMContentLoaded', function() {
     // Funksjonen som skal kjøre etter at siden er ferdig lastet
     console.log('Siden er ferdig lastet!');
@@ -15,10 +19,9 @@ function startFamily(){
 }
 
 function responsfamily(data){
-  let members =  makeMemberArray(data.fields);
+  globalmembers =  makeMemberArray(data.fields);
   //hente abonnement på klient
   getSubscription(getUserObject().aklient[0]);
-  console.log(members);
 }
 
 function makeMemberArray(familyObject){
@@ -31,7 +34,7 @@ function makeMemberArray(familyObject){
 
     for (var i = 0;i<member.length;i++){
         members.push({
-            member:member[i],
+            airtable:member[i],
             membername:membername[i],
             memberage:memberage[i],
             memberemail:memberemail[i],
@@ -52,10 +55,31 @@ function getSubscription(klientid){
 }
 
 function responssubscription(data){
-console.log(data);
+globalsubscriptions = rawdatacleaner(data);
+// lag array med medlemmene og abonnement
+console.log(mergMembersAndSubscriptions(globalmembers,globalsubscriptions));
 }
 
+function mergMembersAndSubscriptions(members,subscription){
+    for(let member of members){
+                if(member?.subscription){
+                   member.subscription = findSubscriptionforThisMember(member,subscription)
+                }
+    }
+    return members;
+}
+function findSubscriptionforThisMember(member,subscription){
+    var memberssubscription = [];
+    for(let item of subscription){
+        if(item?.user){
+            if (item.user.includes(member.airtable)){
+                memberssubscription.push(item);
+            }
+        }
 
+    }
+return memberssubscription;
+}
 function getUserObject(){
     // Hente arrayen fra localStorage
     const stringUserObject = localStorage.getItem('UserObject');
