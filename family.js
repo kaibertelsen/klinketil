@@ -42,14 +42,12 @@ function makeMemberArray(familyObject){
 
 function getSubscription(klientid){
 //
-let body = airtablebodylistAND(
+    let body = airtablebodylistAND(
     {
         klientid:klientid
     }
     );
-Getlistairtable("apphvNDlBgA5T08CM","",body,"responssubscription");
-
-
+    Getlistairtable("apphvNDlBgA5T08CM","tblNE0cBMkVKMw0GZ",body,"responssubscription");
 }
 
 function responssubscription(data){
