@@ -15,8 +15,34 @@ function startFamily(){
 }
 
 function responsfamily(data){
-    console.log(data.data.fields);
+  let members =  makeMemberArray(data.fields);
+  console.log(members);
 }
+
+function makeMemberArray(familyObject){
+    let member = familyObject.member;
+    let membername = familyObject.membername;
+    let memberage = familyObject.memberage;
+    let memberemail = familyObject.memberemail;
+
+    let members = [];
+
+    for (var i = 0;i<member.length;i++){
+        members.push({
+            member:member[0],
+            membername:membername[0],
+            memberage:memberage[0],
+            memberemail:memberemail[0] 
+        });
+    }
+    return members;
+}
+
+
+
+
+
+
 
 
 function getUserObject(){
