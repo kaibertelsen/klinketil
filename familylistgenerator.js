@@ -3,6 +3,7 @@ function makeFamilyList(members){
     const list = document.getElementById("familylistholder");
     const elementlibrary = document.getElementById("elementholderfamily");
     const nodeelement = elementlibrary.querySelector('.rowmember');
+
     for (let member of members) {
         // Lag en kopi av elementet
         const rowelement = nodeelement.cloneNode(true);
@@ -12,14 +13,12 @@ function makeFamilyList(members){
         membername.textContent = member.membername;
 
         const memberage = rowelement.querySelector(".agelable");
-        memberage.textContent = member.memberage;
-
-        
-        
+        memberage.textContent = "("+member.memberage+")";
 
         list.appendChild(rowelement);
 
         //lage subscription
+        var totalvalue = 0;
         const subscriptionlist = rowelement.querySelector(".subscriptionlist");
         const subsctiptionrownode = subscriptionlist.querySelector(".subsctiptionrow");
         let membervalue = 0;
@@ -46,6 +45,14 @@ function makeFamilyList(members){
 
         const membervaluelable = rowelement.querySelector(".membervaluelable");
         membervaluelable.textContent = membervalue+" kr/år";
+        totalvalue = totalvalue+membervalue;
             
     }
+
+    const nodesumelement = elementlibrary.querySelector('.sumfooter');
+    const sumelement = nodesumelement.cloneNode(true);
+
+    const totalsumlable = sumelement.querySelector(".totalsumlable");
+    totalsumlable.textContent = totalvalue+" kr/år";
+     list.appendChild(sumelement);
 }
