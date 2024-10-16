@@ -14,6 +14,7 @@ function makeFamilyList(members){
         const memberage = rowelement.querySelector(".agelable");
         memberage.textContent = member.memberage;
 
+        list.appendChild(rowelement);
 
         //lage subscription
         const subscriptionlist = rowelement.querySelector(".subscriptionlist");
