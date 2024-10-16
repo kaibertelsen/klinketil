@@ -26,7 +26,6 @@ function getUserObject(){
     if (stringUserObject) {
         // Konverter strengen tilbake til en array
         const UserObject = JSON.parse(stringUserObject);
-        console.log(UserObject); // Logger arrayen til konsollen
     return UserObject;
     }else{
     return false;   
