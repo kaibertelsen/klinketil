@@ -62,9 +62,7 @@ console.log(mergMembersAndSubscriptions(globalmembers,globalsubscriptions));
 
 function mergMembersAndSubscriptions(members,subscription){
     for(let member of members){
-                if(member?.subscription){
                    member.subscription = findSubscriptionforThisMember(member,subscription)
-                }
     }
     return members;
 }
