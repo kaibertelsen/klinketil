@@ -4,6 +4,7 @@ function makeFamilyList(members){
     const elementlibrary = document.getElementById("elementholderfamily");
     const nodeelement = elementlibrary.querySelector('.rowmember');
 
+    let totalvalue = 0;
     for (let member of members) {
         // Lag en kopi av elementet
         const rowelement = nodeelement.cloneNode(true);
@@ -18,7 +19,7 @@ function makeFamilyList(members){
         list.appendChild(rowelement);
 
         //lage subscription
-        var totalvalue = 0;
+       
         const subscriptionlist = rowelement.querySelector(".subscriptionlist");
         const subsctiptionrownode = subscriptionlist.querySelector(".subsctiptionrow");
         let membervalue = 0;
