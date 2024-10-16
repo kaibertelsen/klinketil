@@ -15,7 +15,7 @@ function startFamily(){
 }
 
 function responsfamily(data){
-    console.log(rawdatacleaner(data))
+    console.log(data.data.fields);
 }
 
 
