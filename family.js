@@ -57,7 +57,7 @@ function getSubscription(klientid){
 function responssubscription(data){
 globalsubscriptions = rawdatacleaner(data);
 // lag array med medlemmene og abonnement
-console.log(mergMembersAndSubscriptions(globalmembers,globalsubscriptions));
+makeFamilyList(mergMembersAndSubscriptions(globalmembers,globalsubscriptions));
 }
 
 function mergMembersAndSubscriptions(members,subscription){
