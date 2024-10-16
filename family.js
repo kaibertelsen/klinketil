@@ -47,7 +47,8 @@ function getSubscription(klientid){
         klientid:klientid
     }
     );
-    Getlistairtable("apphvNDlBgA5T08CM","tblNE0cBMkVKMw0GZ",body,"responssubscription");
+
+    Getlistairtable("apphvNDlBgA5T08CM","tblNE0cBMkVKMw0GZ",JSON.stringify(body),"responssubscription");
 }
 
 function responssubscription(data){
