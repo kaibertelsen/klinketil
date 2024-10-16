@@ -19,6 +19,9 @@ function startFamily(){
 }
 
 function responsfamily(data){
+
+document.getElementById("familynamelable").textContent = data.fields.name;
+
   globalmembers =  makeMemberArray(data.fields);
   //hente abonnement på klient
   getSubscription(getUserObject().aklient[0]);
