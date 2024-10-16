@@ -98,3 +98,20 @@ function ruteresponse(data,id){
         responssubscription(data);
     }
 }
+
+function valutalook(value){
+    //gjøre verdien visuel persentabel
+           value = value.toLocaleString('en-US');
+           value=value.replace(",", " ");
+           value=value.replace(",", " ");
+           return value;   
+}
+
+function round(value, precision){
+    var multiplier = Math.pow(10, precision || 0);
+    return Math.round(value * multiplier) / multiplier;
+}
+
+function bigvalutaLayout(value){
+return  valutalook(round(value, 0));
+}

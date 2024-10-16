@@ -37,7 +37,7 @@ function makeFamilyList(members){
                 }
                 
                 const subvalue = rowsub.querySelector(".subscriptionvalue");
-                subvalue.textContent = sub.value+" kr/år";
+                subvalue.textContent = bigvalutaLayout(sub.value)+" kr/år";
                 membervalue = membervalue+sub.value;
 
                 subscriptionlist.appendChild(rowsub);
@@ -54,6 +54,6 @@ function makeFamilyList(members){
     const sumelement = nodesumelement.cloneNode(true);
 
     const totalsumlable = sumelement.querySelector(".totalsumlable");
-    totalsumlable.textContent = totalvalue+" kr/år";
+    totalsumlable.textContent = bigvalutaLayout(totalvalue)+" kr/år";
      list.appendChild(sumelement);
 }
