@@ -23,9 +23,9 @@ function responsfamily(data){
 
   document.getElementById("familynamelable").textContent = "Familien: "+data.fields.name;
 
-  globalmembers =  makeMemberArray(data.fields);
+  globalefamlily =  makeMemberArray(data.fields);
   // Sorter arrayen etter 'memberage', størst først
-  globalmembers.sort((a, b) => b.memberage - a.memberage);
+  globalefamlily.sort((a, b) => b.memberage - a.memberage);
 
   //hente abonnement på klient
   getSubscription(getUserObject().aklient[0]);
@@ -64,7 +64,7 @@ function getSubscription(klientid){
 function responssubscription(data){
 globalsubscriptions = rawdatacleaner(data);
 // lag array med medlemmene og abonnement
-globallist = mergMembersAndSubscriptions(globalmembers,globalsubscriptions);
+globallist = mergMembersAndSubscriptions(globalefamlily,globalsubscriptions);
 makeFamilyList(globallist);
 }
 

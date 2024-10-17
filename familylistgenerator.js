@@ -21,12 +21,23 @@ function makeFamilyList(members){
         membername.textContent = member.membername;
 
         let agecontent = "";
-        //sjekke om dette er innlogget bruker
-        if(getUserObject().airtable == member.airtable){
-            agecontent = "("+member.memberage+")"+" Deg";
+        let calcCost = true;
+        //sjekke om dette er admin users
+        if (globalefamlily.admin.includes(member.airtable)){
+            //da er dette medlemmet admin i familien
+            if(getUserObject().airtable == member.airtable){
+                agecontent = "("+member.memberage+")"+"Admin (deg)";
+            }else{
+                agecontent = "("+member.memberage+")"+"Admin";
+            }
+        }else if(member.memberage>17){
+            //medlemmet er over 18 og kostnadene skal ikke listes
+            agecontent = "Er "+member.memberage+" år og bærer kostnadene selv";
+            calcCost = false;
         }else{
             agecontent = "("+member.memberage+")";
         }
+
         const memberage = rowelement.querySelector(".agelable");
         memberage.textContent = agecontent;
 
@@ -37,6 +48,8 @@ function makeFamilyList(members){
         const subscriptionlist = rowelement.querySelector(".subscriptionlist");
         const subsctiptionrownode = subscriptionlist.querySelector(".subsctiptionrow");
         let membervalue = 0;
+        const membervaluelable = rowelement.querySelector(".membervaluelable");
+        if(calcCost){
             for(let sub of member.subscription){
                 const rowsub = subsctiptionrownode.cloneNode(true); 
 
@@ -58,9 +71,10 @@ function makeFamilyList(members){
                 subscriptionlist.appendChild(rowsub);
             }
             subsctiptionrownode.remove();
-
-        const membervaluelable = rowelement.querySelector(".membervaluelable");
-        membervaluelable.textContent = bigvalutaLayout(membervalue)+" kr/"+selectedText;
+            membervaluelable.textContent = bigvalutaLayout(membervalue)+" kr/"+selectedText;
+        }else{
+            membervaluelable.style.display = "none";
+        }
         totalvalue = totalvalue+membervalue;
             
     }
