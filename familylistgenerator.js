@@ -53,7 +53,7 @@ function makeFamilyList(members){
                 const subvalue = rowsub.querySelector(".subscriptionvalue");
                 let subscriptionValue = (sub.value/sub.intervall)*Number(periodselectorvalue);
                 subvalue.textContent = bigvalutaLayout(subscriptionValue)+" kr/"+selectedText;
-                membervalue = membervalue+sub.value;
+                membervalue = membervalue+subscriptionValue;
 
                 subscriptionlist.appendChild(rowsub);
             }
