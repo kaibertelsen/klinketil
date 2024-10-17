@@ -22,7 +22,7 @@ function startFamily(){
 
 function responsfamily(data){
 
-  document.getElementById("familynamelable").textContent = "Familien: "+data.fields.name;
+  document.getElementById("familynamelable").textContent = "Min familie: "+data.fields.name;
 
   familyObject = data.fields;
   globalefamlily =  makeMemberArray(familyObject);
