@@ -51,7 +51,7 @@ function makeFamilyList(members){
                 }
                 //verdi
                 const subvalue = rowsub.querySelector(".subscriptionvalue");
-                let subscriptionValue = (Number(sub.value)/Number(sub.intervall))*periodselectorvalue;
+                let subscriptionValue = (sub.value/sub.intervall)*Number(periodselectorvalue);
                 subvalue.textContent = bigvalutaLayout(subscriptionValue)+" kr/"+selectedText;
                 membervalue = membervalue+sub.value;
 
