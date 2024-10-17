@@ -24,7 +24,7 @@ function makeFamilyList(members){
         memberage.textContent = member.memberage+" år";
 
         const infotextmember = rowelement.querySelector(".infotextmember");
-        
+
         let calcCost = true;
         //sjekke om dette er admin users
         if (familyObject.admin.includes(member.airtable)){
@@ -41,13 +41,6 @@ function makeFamilyList(members){
         }else{
             infotextmember.style.display = "none";
         }
-
-        
-
-        
-
-
-
 
         list.appendChild(rowelement);
 
@@ -82,6 +75,7 @@ function makeFamilyList(members){
             membervaluelable.textContent = bigvalutaLayout(membervalue)+" kr/"+selectedText;
         }else{
             membervaluelable.style.display = "none";
+            subsctiptionrownode.remove();
         }
         totalvalue = totalvalue+membervalue;
             
