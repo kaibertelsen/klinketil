@@ -1,5 +1,6 @@
 var globalsubscriptions;
 var globalmembers;
+var globallist;
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -20,7 +21,7 @@ function startFamily(){
 
 function responsfamily(data){
 
-  document.getElementById("familynamelable").textContent = "Familien:"+data.fields.name;
+  document.getElementById("familynamelable").textContent = "Familien: "+data.fields.name;
 
   globalmembers =  makeMemberArray(data.fields);
   // Sorter arrayen etter 'memberage', størst først
@@ -63,7 +64,12 @@ function getSubscription(klientid){
 function responssubscription(data){
 globalsubscriptions = rawdatacleaner(data);
 // lag array med medlemmene og abonnement
-makeFamilyList(mergMembersAndSubscriptions(globalmembers,globalsubscriptions));
+globallist = mergMembersAndSubscriptions(globalmembers,globalsubscriptions);
+makeFamilyList(globallist);
+}
+
+function onPeriodeChange(){
+    makeFamilyList(globallist);
 }
 
 function mergMembersAndSubscriptions(members,subscription){

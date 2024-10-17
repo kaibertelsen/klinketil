@@ -1,8 +1,15 @@
 function makeFamilyList(members){
 
     const list = document.getElementById("familylistholder");
+    //tømme listen 
+    list.innerHTML = "";
+    
     const elementlibrary = document.getElementById("elementholderfamily");
     const nodeelement = elementlibrary.querySelector('.rowmember');
+
+    const periodselector = document.getElementById("periodeselector");
+    const periodselectorvalue = periodselector.value;
+    const selectedText = periodselector.options[periodselector.selectedIndex].text;
 
     let totalvalue = 0;
     for (let member of members) {
@@ -42,9 +49,10 @@ function makeFamilyList(members){
                 }else{
                     subdescription.textContent = "-";;
                 }
-                
+                //verdi
                 const subvalue = rowsub.querySelector(".subscriptionvalue");
-                subvalue.textContent = bigvalutaLayout(sub.value)+" kr/år";
+                let subscriptionValue = (sub.value/sub.intervall)*periodselectorvalue;
+                subvalue.textContent = bigvalutaLayout(subscriptionValue)+" kr/"+selectedText;
                 membervalue = membervalue+sub.value;
 
                 subscriptionlist.appendChild(rowsub);
