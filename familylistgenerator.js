@@ -23,7 +23,7 @@ function makeFamilyList(members){
         let agecontent = "";
         let calcCost = true;
         //sjekke om dette er admin users
-        if (globalefamlily.admin.includes(member.airtable)){
+        if (familyObject.admin.includes(member.airtable)){
             //da er dette medlemmet admin i familien
             if(getUserObject().airtable == member.airtable){
                 agecontent = "("+member.memberage+")"+"Admin (deg)";

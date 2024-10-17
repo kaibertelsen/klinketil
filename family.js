@@ -1,6 +1,7 @@
 var globalsubscriptions;
 var globalmembers;
 var globallist;
+var familyObject;
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -23,7 +24,8 @@ function responsfamily(data){
 
   document.getElementById("familynamelable").textContent = "Familien: "+data.fields.name;
 
-  globalefamlily =  makeMemberArray(data.fields);
+  familyObject = data.fields;
+  globalefamlily =  makeMemberArray(familyObject);
   // Sorter arrayen etter 'memberage', størst først
   globalefamlily.sort((a, b) => b.memberage - a.memberage);
 
