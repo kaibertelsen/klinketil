@@ -36,7 +36,7 @@ function makeFamilyList(members){
             }
         }else if(member.memberage>17){
             //medlemmet er over 18 og kostnadene skal ikke listes
-            infotextmember.textContent = "Dekker sin egen kostnad";
+            infotextmember.textContent = "Ansvar for egen kostnad";
             calcCost = false;
         }else{
             infotextmember.style.display = "none";
