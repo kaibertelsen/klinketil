@@ -20,26 +20,34 @@ function makeFamilyList(members){
         const membername = rowelement.querySelector(".membername");
         membername.textContent = member.membername;
 
-        let agecontent = "";
+        const memberage = rowelement.querySelector(".agelable");
+        memberage.textContent = member.memberage+" år";
+
+        const infotextmember = rowelement.querySelector(".infotextmember");
+        
         let calcCost = true;
         //sjekke om dette er admin users
         if (familyObject.admin.includes(member.airtable)){
             //da er dette medlemmet admin i familien
             if(getUserObject().airtable == member.airtable){
-                agecontent = "("+member.memberage+")"+"Admin (deg)";
+                infotextmember.textContent = "Admin (Dette er deg)";
             }else{
-                agecontent = "("+member.memberage+")"+"Admin";
+                infotextmember.textContent = "Admin";
             }
         }else if(member.memberage>17){
             //medlemmet er over 18 og kostnadene skal ikke listes
-            agecontent = "Er "+member.memberage+" år og bærer kostnadene selv";
+            infotextmember.textContent = "Dekker sin egen kostnad";
             calcCost = false;
         }else{
-            agecontent = "("+member.memberage+")";
+            infotextmember.style.display = "none";
         }
 
-        const memberage = rowelement.querySelector(".agelable");
-        memberage.textContent = agecontent;
+        
+
+        
+
+
+
 
         list.appendChild(rowelement);
 
