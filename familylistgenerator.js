@@ -3,7 +3,7 @@ function makeFamilyList(members){
     const list = document.getElementById("familylistholder");
     //tømme listen 
     list.innerHTML = "";
-    
+
     const elementlibrary = document.getElementById("elementholderfamily");
     const nodeelement = elementlibrary.querySelector('.rowmember');
 
@@ -51,7 +51,7 @@ function makeFamilyList(members){
                 }
                 //verdi
                 const subvalue = rowsub.querySelector(".subscriptionvalue");
-                let subscriptionValue = (sub.value/sub.intervall)*periodselectorvalue;
+                let subscriptionValue = (Number(sub.value)/Number(sub.intervall))*periodselectorvalue;
                 subvalue.textContent = bigvalutaLayout(subscriptionValue)+" kr/"+selectedText;
                 membervalue = membervalue+sub.value;
 
