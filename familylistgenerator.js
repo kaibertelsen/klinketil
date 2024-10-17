@@ -60,7 +60,7 @@ function makeFamilyList(members){
             subsctiptionrownode.remove();
 
         const membervaluelable = rowelement.querySelector(".membervaluelable");
-        membervaluelable.textContent = membervalue+" kr/år";
+        membervaluelable.textContent = bigvalutaLayout(membervalue)+" kr/"+selectedText;
         totalvalue = totalvalue+membervalue;
             
     }
@@ -69,6 +69,6 @@ function makeFamilyList(members){
     const sumelement = nodesumelement.cloneNode(true);
 
     const totalsumlable = sumelement.querySelector(".totalsumlable");
-    totalsumlable.textContent = bigvalutaLayout(totalvalue)+" kr/år";
+    totalsumlable.textContent = bigvalutaLayout(totalvalue)+" kr/"+selectedText;
      list.appendChild(sumelement);
 }
