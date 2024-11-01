@@ -223,7 +223,7 @@ function creatNewWrapper(list,addbutton,data){
         unitvaluefield.type = 'text';
         unitvaluefield.classList.add("inputtext");
         unitvaluefield.classList.add("saveelement");
-        unitvaluefield.dataset.key = "unitlable";
+        unitvaluefield.dataset.key = "unitlabel";
         unitvaluefield.dataset.type = "value";
         unitvaluefield.value = "antall";
         if(checkbox.checked){unitvaluefield.style.display = "block"}else{
@@ -586,3 +586,7 @@ function newProjectretur(data,id){
     
 console.log(data);
 }
+
+
+
+
