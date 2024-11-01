@@ -191,7 +191,7 @@ function creatNewWrapper(list,addbutton,data){
         const rownumber = editwrapperRow;
         editwrapperRow = Number(editwrapperRow)+1;
         editwrapperRow = editwrapperRow.toString();
-        
+
         console.log("Denne klienten skal kunne administrere andre enheter også");
 
         //Lage felt for checkbox og labletekst
@@ -224,7 +224,7 @@ function creatNewWrapper(list,addbutton,data){
         unitvaluefield.classList.add("inputtext");
         unitvaluefield.classList.add("saveelement");
         unitvaluefield.dataset.key = "unitlable";
-        unitvaluefield.dataset.type = "text";
+        unitvaluefield.dataset.type = "value";
         unitvaluefield.value = "antall";
         if(checkbox.checked){unitvaluefield.style.display = "block"}else{
             unitvaluefield.style.display = "none";
