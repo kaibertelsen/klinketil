@@ -191,6 +191,53 @@ function creatNewWrapper(list,addbutton,data){
         const rownumber = editwrapperRow;
         editwrapperRow = editwrapperRow +1;
         console.log("Denne klienten skal kunne administrere andre enheter også");
+
+        //Lage felt for checkbox og labletekst
+        const unitwraper = document.createElement('div');
+        unitwraper.style.gridColumn = '1';
+        unitwraper.style.gridRow = rownumber; 
+        unitwraper.classList.add("checkboxholder");
+        newWrapper.appendChild(unitwraper);
+        //
+        const checkbox = document.createElement("input");   
+        checkbox.type = 'checkbox';
+            if(data?.unit){
+                if(data.unit){
+                    checkbox.checked = true;
+                } 
+            };
+        checkbox.classList.add("checkboxcell");
+        checkbox.classList.add("saveelement");
+        checkbox.dataset.key = "unit";
+        checkbox.dataset.type = "checkbox";
+        unitwraper.appendChild(checkbox);
+        //
+        const   lable = document.createElement("text");
+        lable.textContent = "Andre enheter en tid";
+        lable.classList.add("lablecheckbox");
+        unitwraper.appendChild(lable);
+        //
+        const unitvaluefield = document.createElement('input');
+        unitvaluefield.type = 'text';
+        unitvaluefield.classList.add("inputtext");
+        unitvaluefield.classList.add("saveelement");
+        unitvaluefield.dataset.key = "unitlable";
+        unitvaluefield.dataset.type = "text";
+        unitvaluefield.value = "antall";
+        if(checkbox.checked){unitvaluefield.style.display = "block"}else{
+            unitvaluefield.style.display = "none";
+        }
+        unitwraper.appendChild(unitvaluefield);
+
+        checkbox.addEventListener('change', function() {
+            if (checkbox.checked) {
+                // Kjør denne funksjonen når checkboxen er valgt
+                unitvaluefield.style.display = "block";
+            } else {
+                // Kjør denne funksjonen når checkboxen ikke er valgt
+                unitvaluefield.style.display = "none";
+            }
+        });
     }
 
 
