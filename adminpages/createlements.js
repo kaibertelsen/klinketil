@@ -186,6 +186,14 @@ function creatNewWrapper(list,addbutton,data){
         });
     }
 
+    if(klientObject?.targetvalueinadmin){
+        //denne klienten skal kunne velge andre enheter å hente inn på prosjektet (itilleg til timer)
+        const rownumber = editwrapperRow;
+        editwrapperRow = editwrapperRow +1;
+        console.log("Denne klienten skal kunne administrere andre enheter også");
+    }
+
+
     //legge til editorbuttons
     const editwraper = document.createElement('div');
     editwraper.style.gridColumn = '1';
