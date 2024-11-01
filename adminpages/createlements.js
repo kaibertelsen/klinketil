@@ -215,7 +215,7 @@ function creatNewWrapper(list,addbutton,data){
         unitwraper.appendChild(checkbox);
         //
         const   lable = document.createElement("text");
-        lable.textContent = "Andre enheter en tid";
+        lable.textContent = "Enheter utover tid. Skriv navnet på enhet (antall sekker)";
         lable.classList.add("lablecheckbox");
         unitwraper.appendChild(lable);
         //
