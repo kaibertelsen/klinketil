@@ -10,7 +10,7 @@ function loadScript(url) {
 
 // Liste over CDN-URL-er som skal lastes inn
 const cdnScripts = [
-    "https://kaibertelsen.github.io/klinketil/admin-afterclick-functions.js"
+    "https://kaibertelsen.github.io/klinketil/adminpages/admin-afterclick-functions.js"
 ];
 
 // Laste inn alle skriptene sekvensielt
