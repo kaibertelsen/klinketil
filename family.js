@@ -108,10 +108,10 @@ function memberControllSubscription(member,subscription){
             if(subscription?.linksubscription){
                return findLinkedSubscriptionForMember(ubscription.linksubscription);
             }
-            
         }
+    }else{
+    return subscription
     }
-return false;
 }
 
 function findLinkedSubscriptionForMember(linkedsubscriptionId){
