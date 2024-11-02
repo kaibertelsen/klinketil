@@ -99,6 +99,9 @@ return memberssubscription;
 function memberControllSubscription(member,subscription){
 
 // Sjekk om abonnementet har aldersbegrensning
+if(subscription?.agefrom){
+    console.log("Dette abonnemanget har aldersbrgrensning"+subscription.name);
+}
 // Hvis det har aldersbegrensning, kontroller om medlemmet oppfyller alderskravet
 // Hvis ikke, hent det første linkede abonnementet og sjekk om dette har aldersbegrensning
 // Hvis det har aldersbegrensning, kontroller om medlemmet oppfyller alderskravet
