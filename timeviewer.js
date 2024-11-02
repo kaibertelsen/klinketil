@@ -1,5 +1,5 @@
 document.addEventListener("visibilitychange", function() {
-    if (document.visibilityState === "visible" && !hasAppOpened) {
+    if (document.visibilityState === "visible") {
         initTimeViewer();
        
     }
