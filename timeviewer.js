@@ -1,6 +1,5 @@
-
 window.onload = function() {
-    startTimeViewer(15.66); // Her kan du endre 5 til ønsket antall timer som skal vises
+    startTimeViewer(5); // Her kan du endre 5 til ønsket antall timer som skal vises
 };
 
 function startTimeViewer(hoursvalue) {
@@ -65,3 +64,4 @@ function startTimeViewer(hoursvalue) {
         }, minuteIntervalTime);
     }, 500); // 500ms forsinkelse for minutttelleren
 }
+
