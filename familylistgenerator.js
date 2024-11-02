@@ -87,8 +87,7 @@ function makeFamilyList(members){
         totalvalue = totalvalue+membervalue;
             
     }
-
-    totalvalue = controllFalilyMaxLimit(familymaxvaluelimit,totalvalue);
+    if(familymaxvaluelimit.length>0){totalvalue = controllFamilyMaxLimit(familymaxvaluelimit,totalvalue);}    
     const nodesumelement = elementlibrary.querySelector('.sumfooter');
     const sumelement = nodesumelement.cloneNode(true);
 
@@ -97,13 +96,65 @@ function makeFamilyList(members){
      list.appendChild(sumelement);
 }
 
-function controllFalilyMaxLimit(familymaxvaluelimit,totalvalue){
+function controllFamilyMaxLimit(objectsArray, totalvalue) {
 
-    let summArray = [];
+    // Bruke reduce for å summere og slå sammen objekter med samme subId
+    const combinedObjects = objectsArray.reduce((acc, current) => {
+        const { subId, value, maxvalue, textelement } = current;
+        
+        if (!acc[subId]) {
+            // Hvis subId ikke eksisterer i acc, initialiser den
+            acc[subId] = {
+                subId,
+                value: 0,
+                maxvalue,
+                textelement: []
+            };
+        }
 
-    if(familymaxvaluelimit.length>0){
+        // Legg til verdien til eksisterende sum for dette subId
+        acc[subId].value += value;
 
+        // Legg til textelement til textelement-arrayen
+        acc[subId].textelement.push(textelement);
 
-    }
-    return totalvalue
+        return acc;
+    }, {});
+
+    // Konverter det akkumulerte objektet til en array hvis ønskelig
+    const resultArray = Object.values(combinedObjects);
+
+    // Variabel for å holde total summen av de laveste verdiene
+    let totalSum = 0;
+
+    // Iterate over combinedObjects for kontroll og beregning
+    resultArray.forEach(obj => {
+        // Finn den laveste verdien mellom value og maxvalue
+        const minValue = Math.min(obj.value, obj.maxvalue);
+        
+        // Legg til den laveste verdien til totalSummen
+        totalSum += minValue;
+
+        // Hvis value er større enn maxvalue, utfør oppdateringen av textelementene
+        if (obj.value > obj.maxvalue) {
+            const newValue = obj.maxvalue / obj.textelement.length;
+            
+            // Oppdater textContent og sett fargen til mørkerød for hvert textelement
+            obj.textelement.forEach(textelement => {
+                textelement.textContent = newValue;
+                textelement.style.color = "#8B0000"; // Sett tekstfargen til mørkerød
+            });
+        }
+    });
+
+    // Returner total summen av laveste verdier pluss totalvalue
+    return totalSum + totalvalue;
 }
+
+
+
+
+
+
+
+    
