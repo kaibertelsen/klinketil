@@ -85,13 +85,28 @@ function findSubscriptionforThisMember(member,subscription){
     for(let item of subscription){
         if(item?.user){
             if (item.user.includes(member.airtable)){
-                memberssubscription.push(item);
+
+                let subitem = memberControllSubscription(member,item);
+                memberssubscription.push(subitem);
             }
         }
 
     }
+
 return memberssubscription;
 }
+
+function memberControllSubscription(member,subscription){
+
+// Sjekk om abonnementet har aldersbegrensning
+// Hvis det har aldersbegrensning, kontroller om medlemmet oppfyller alderskravet
+// Hvis ikke, hent det første linkede abonnementet og sjekk om dette har aldersbegrensning
+// Hvis det har aldersbegrensning, kontroller om medlemmet oppfyller alderskravet
+// Hvis ikke, hent det andre linkede abonnementet og legg til dette som abonnement
+return subscription;
+}
+
+
 function getUserObject(){
     // Hente arrayen fra localStorage
     const stringUserObject = localStorage.getItem('UserObject');
