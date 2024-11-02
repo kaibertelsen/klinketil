@@ -99,7 +99,7 @@ return memberssubscription;
 function memberControllSubscription(member,subscription){
 
 // Sjekk om abonnementet har aldersbegrensning
-if(subscription?.agefrom){
+if(subscription?.agefrom || subscription?.ageto ){
     console.log("Dette abonnemanget har aldersbrgrensning"+subscription.name);
 }
 // Hvis det har aldersbegrensning, kontroller om medlemmet oppfyller alderskravet
