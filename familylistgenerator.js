@@ -12,6 +12,7 @@ function makeFamilyList(members){
     const selectedText = periodselector.options[periodselector.selectedIndex].text;
 
     let totalvalue = 0;
+    let familymaxvaluelimit = [];
     for (let member of members) {
         // Lag en kopi av elementet
         const rowelement = nodeelement.cloneNode(true);
@@ -67,8 +68,14 @@ function makeFamilyList(members){
                 const subvalue = rowsub.querySelector(".subscriptionvalue");
                 let subscriptionValue = (sub.value/sub.intervall)*Number(periodselectorvalue);
                 subvalue.textContent = bigvalutaLayout(subscriptionValue)+" kr/"+selectedText;
-                membervalue = membervalue+subscriptionValue;
+                
 
+                if(sub?.maxfamilyvalue){
+                    //dette er er makspris sub må regnes ut seinere
+                    familymaxvaluelimit.push({subId:sub.airtable,value:sub.year,maxvalue:sub.maxfamilyvalue,textelement:subvalue});
+                }else{
+                    membervalue = membervalue+subscriptionValue;
+                }
                 subscriptionlist.appendChild(rowsub);
             }
             subsctiptionrownode.remove();
@@ -81,10 +88,22 @@ function makeFamilyList(members){
             
     }
 
+    totalvalue = controllFalilyMaxLimit(familymaxvaluelimit,totalvalue);
     const nodesumelement = elementlibrary.querySelector('.sumfooter');
     const sumelement = nodesumelement.cloneNode(true);
 
     const totalsumlable = sumelement.querySelector(".totalsumlable");
     totalsumlable.textContent = bigvalutaLayout(totalvalue)+" kr/"+selectedText;
      list.appendChild(sumelement);
+}
+
+function controllFalilyMaxLimit(familymaxvaluelimit,totalvalue){
+
+    let summArray = [];
+
+    if(familymaxvaluelimit.length>0){
+
+
+    }
+    return totalvalue
 }

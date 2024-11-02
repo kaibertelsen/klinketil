@@ -106,12 +106,11 @@ function memberControllSubscription(member,subscription){
             //medlemmer er ikke innafor aldersbegrensningen
             console.log("Er utafor");
             if(subscription?.linksubscription){
-               return findLinkedSubscriptionForMember(ubscription.linksubscription);
+            return findLinkedSubscriptionForMember(ubscription.linksubscription);
             }
         }
-    }else{
-    return subscription
     }
+    return subscription
 }
 
 function findLinkedSubscriptionForMember(linkedsubscriptionId){
