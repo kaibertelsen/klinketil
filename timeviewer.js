@@ -1,5 +1,5 @@
 window.onload = function() {
-    startTimeViewer(5); // Her kan du endre 5 til ønsket antall timer som skal vises
+    // Her kan du endre 5 til ønsket antall timer som skal vises
 };
 
 function startTimeViewer(hoursvalue) {
