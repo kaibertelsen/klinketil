@@ -1,6 +1,9 @@
-window.onload = function() {
-    initTimeViewer();
-};
+document.addEventListener("visibilitychange", function() {
+    if (document.visibilityState === "visible" && !hasAppOpened) {
+        initTimeViewer();
+       
+    }
+});
 
 function initTimeViewer() {
     // Hent verdiene for timer og minutter fra HTML-elementene
