@@ -1,6 +1,22 @@
 window.onload = function() {
-    // Her kan du endre 5 til ønsket antall timer som skal vises
+    initTimeViewer();
 };
+
+function initTimeViewer() {
+    // Hent verdiene for timer og minutter fra HTML-elementene
+    const hourText = document.getElementById("hourviewer").innerText;
+    const minuteText = document.getElementById("minutsviewer").innerText;
+
+    // Konverter tekstverdiene til tall
+    const hours = parseInt(hourText, 10);
+    const minutes = parseInt(minuteText, 10);
+
+    // Beregn den totale verdien i timer (inkludert minuttene konvertert til timer)
+    const totalHoursValue = hours + minutes / 60;
+
+    // Kall `startTimeViewer` med den beregnede verdien
+    startTimeViewer(totalHoursValue);
+}
 
 function startTimeViewer(hoursvalue) {
     let timeviewerwrapper = document.getElementById("timeviewerwrapper");
