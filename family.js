@@ -85,7 +85,6 @@ function findSubscriptionforThisMember(member,subscription){
     for(let item of subscription){
         if(item?.user){
             if (item.user.includes(member.airtable)){
-
                 let subitem = memberControllSubscription(member,item);
                 memberssubscription.push(subitem);
             }
@@ -98,25 +97,29 @@ return memberssubscription;
 
 function memberControllSubscription(member,subscription){
 
-
     if(subscription?.agefrom || subscription?.ageto ){
         // Abonnementet har aldersbegrensning
-
         if (member.memberage>subscription.agefrom && member.memberage<subscription.ageto){
             //medlemet er innafor aldersbegrensningen
-            console.log("Er innafor");
-
+            return subscription;
         }else{
             //medlemmer er ikke innafor aldersbegrensningen
             console.log("Er utafor");
+            if(subscription?.linksubscription){
+               return findLinkedSubscriptionForMember(ubscription.linksubscription);
+            }
+            
         }
-
+    }
+return false;
 }
-// Hvis det har aldersbegrensning, kontroller om medlemmet oppfyller alderskravet
-// Hvis ikke, hent det første linkede abonnementet og sjekk om dette har aldersbegrensning
-// Hvis det har aldersbegrensning, kontroller om medlemmet oppfyller alderskravet
-// Hvis ikke, hent det andre linkede abonnementet og legg til dette som abonnement
-return subscription;
+
+function findLinkedSubscriptionForMember(linkedsubscriptionId){
+    for(var i = 0;i<linkedsubscriptionId.length;i++){
+      //finne subscription  linkedsubscriptionId
+    return  globalsubscriptions.find(obj => obj.airtable === linkedsubscriptionId[i]);
+    }
+    return false;
 }
 
 
