@@ -12,7 +12,6 @@ function makeFamilyList(members){
     const selectedText = periodselector.options[periodselector.selectedIndex].text;
 
     let totalvalue = 0;
-    let familymaxvaluelimit = [];
     for (let member of members) {
         // Lag en kopi av elementet
         const rowelement = nodeelement.cloneNode(true);
@@ -64,18 +63,27 @@ function makeFamilyList(members){
                 }else{
                     subdescription.textContent = "-";;
                 }
+                
                 //verdi
                 const subvalue = rowsub.querySelector(".subscriptionvalue");
-                let subscriptionValue = (sub.value/sub.intervall)*Number(periodselectorvalue);
-                subvalue.textContent = bigvalutaLayout(subscriptionValue)+" kr/"+selectedText;
-                
-
+                let subscriptionValue = "";
                 if(sub?.maxfamilyvalue){
                     //dette er er makspris sub må regnes ut seinere
-                    familymaxvaluelimit.push({subId:sub.airtable,value:sub.year,maxvalue:sub.maxfamilyvalue,textelement:subvalue});
+                    let resultatobject = setSubscriptionValueControll(member,members,sub,globalsubscriptions)
+                    if(resultatobject.isRegulert){
+                        textelement.style.color = "#8B0000"; // Sett tekstfargen til mørkerød
+                        subname.textContent = sub.name+" (Jusert etter maxpris)";
+                    }
+                    
+                    membervalue += resultatobject.resultat;
+                    subscriptionValue = (resultatobject.resultat/sub.intervall)*Number(periodselectorvalue);
+
                 }else{
-                    membervalue = membervalue+subscriptionValue;
+                    membervalue += subscriptionValue;
+                    subscriptionValue = (sub.value/sub.intervall)*Number(periodselectorvalue);
                 }
+
+                subvalue.textContent = bigvalutaLayout(subscriptionValue)+" kr/"+selectedText;
                 subscriptionlist.appendChild(rowsub);
             }
             subsctiptionrownode.remove();
@@ -87,7 +95,7 @@ function makeFamilyList(members){
         totalvalue = totalvalue+membervalue;
             
     }
-    if(familymaxvaluelimit.length>0){totalvalue = controllFamilyMaxLimit(familymaxvaluelimit,totalvalue);}    
+
     const nodesumelement = elementlibrary.querySelector('.sumfooter');
     const sumelement = nodesumelement.cloneNode(true);
 
@@ -96,6 +104,34 @@ function makeFamilyList(members){
      list.appendChild(sumelement);
 }
 
+
+
+
+function setSubscriptionValueControll(member, members, sub) {
+    // Sjekker hvor mange medlemmer som har samme abonnement (samme airtable ID)
+    const sameSubscriptionCount = members.filter(m => m.subscription.airtable === member.subscription.airtable).length;
+
+    // Beregner delverdien ved å dele sub.maxvalue på antall medlemmer med samme abonnement
+    const resultat = sub.maxvalue / sameSubscriptionCount;
+
+    // Sjekker om resultat er mindre enn sub.year og setter boolsk verdi deretter
+    const isRegulert = resultat < sub.year;
+
+    // Returnerer resultat og boolean verdi
+    return { resultat, isRegulert };
+}
+
+
+
+
+
+
+
+
+
+
+
+/*
 function controllFamilyMaxLimit(objectsArray, totalvalue) {
 
     // Bruke reduce for å summere og slå sammen objekter med samme subId
@@ -154,6 +190,6 @@ function controllFamilyMaxLimit(objectsArray, totalvalue) {
     // Returner total summen av laveste verdier pluss totalvalue
     return totalSum + totalvalue;
 }
-
+*/
 
 
