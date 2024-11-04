@@ -107,11 +107,14 @@ function makeFamilyList(members){
 
 
 
-function setSubscriptionValueControll(member, members, sub) {
-    // Sjekker hvor mange medlemmer som har samme abonnement (samme airtable ID)
-    const sameSubscriptionCount = members.filter(m => m.subscription.airtable === member.subscription.airtable).length;
+function setSubscriptionValueControll(member, members, sub, familyObject) {
+    // Filtrerer medlemmer som har samme abonnement (samme airtable ID), og enten har alder mindre enn 18 eller er admin
+    const sameSubscriptionCount = members.filter(m => 
+        m.subscription.includes(member.subscription.airtable) && 
+        (m.memberage < 18 || familyObject.admin.includes(m.airtable))
+    ).length;
 
-    // Beregner delverdien ved å dele sub.maxvalue på antall medlemmer med samme abonnement
+    // Beregner delverdien ved å dele sub.maxfamilyvalue på antall medlemmer med samme abonnement
     const resultat = sub.maxfamilyvalue / sameSubscriptionCount;
 
     // Sjekker om resultat er mindre enn sub.year og setter boolsk verdi deretter
@@ -120,8 +123,6 @@ function setSubscriptionValueControll(member, members, sub) {
     // Returnerer resultat og boolean verdi
     return { resultat, isRegulert };
 }
-
-
 
 
 
