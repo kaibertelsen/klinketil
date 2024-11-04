@@ -127,18 +127,17 @@ function controllFamilyMaxLimit(objectsArray, totalvalue) {
     // Variabel for å holde total summen av de laveste verdiene
     let totalSum = 0;
 
+    const periodselector = document.getElementById("periodeselector");
+    const periodselectorvalue = periodselector.value;
+    const selectedText = periodselector.options[periodselector.selectedIndex].text;
+
     // Iterate over combinedObjects for kontroll og beregning
     resultArray.forEach(obj => {
         // Finn den laveste verdien mellom value og maxvalue
         const minValue = Math.min(obj.value, obj.maxvalue);
         
         // Legg til den laveste verdien til totalSummen
-        totalSum += minValue/12*periodselector.value;
-
-
-        const periodselector = document.getElementById("periodeselector");
-        const periodselectorvalue = periodselector.value;
-        const selectedText = periodselector.options[periodselector.selectedIndex].text;
+        totalSum += minValue/12*periodselectorvalue;
 
         // Hvis value er større enn maxvalue, utfør oppdateringen av textelementene
         if (obj.value > obj.maxvalue) {
