@@ -133,7 +133,7 @@ function controllFamilyMaxLimit(objectsArray, totalvalue) {
         const minValue = Math.min(obj.value, obj.maxvalue);
         
         // Legg til den laveste verdien til totalSummen
-        totalSum += minValue;
+        totalSum += minValue/12*periodselector.value;
 
 
         const periodselector = document.getElementById("periodeselector");
