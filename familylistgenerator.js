@@ -66,7 +66,7 @@ function makeFamilyList(members){
                 
                 //verdi
                 const subvalue = rowsub.querySelector(".subscriptionvalue");
-                let subscriptionValue = "";
+                let subscriptionValue = 0;
                 if(sub?.maxfamilyvalue){
                     //dette er er makspris sub må regnes ut seinere
                     let resultatobject = setSubscriptionValueControll(member,members,sub,globalsubscriptions)
