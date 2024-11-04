@@ -108,9 +108,13 @@ function makeFamilyList(members){
 
 
 function setSubscriptionValueControll(member, members, sub, familyObject) {
-    // Filtrerer medlemmer som har samme abonnement (samme airtable ID), og enten har alder mindre enn 18 eller er admin
+    // Filtrerer medlemmer som har et abonnement med samme airtable ID og enten alder < 18 eller er admin
     const sameSubscriptionCount = members.filter(m => 
-        m.subscription.includes(member.subscription.airtable) && 
+        // Sjekker om noen av abonnementene i m.subscription matcher noen i member.subscription
+        m.subscription.some(subscriptionM => 
+            member.subscription.some(subscriptionMember => subscriptionMember.airtable === subscriptionM.airtable)
+        ) &&
+        // Sjekker om medlemmet er under 18 eller er admin
         (m.memberage < 18 || familyObject.admin.includes(m.airtable))
     ).length;
 
@@ -123,6 +127,7 @@ function setSubscriptionValueControll(member, members, sub, familyObject) {
     // Returnerer resultat og boolean verdi
     return { resultat, isRegulert };
 }
+
 
 
 
