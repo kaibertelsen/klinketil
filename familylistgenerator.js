@@ -114,11 +114,15 @@ function setSubscriptionValueControll(member, members, sub, familyObject) {
         (m.memberage < 18 || familyObject.admin.includes(m.airtable))
     ).length;
 
-    // Beregner delverdien ved å dele sub.maxfamilyvalue på antall medlemmer med samme abonnement
-    const resultat = sub.maxfamilyvalue / sameSubscriptionCount;
-
     // Sjekker om resultat er mindre enn sub.year og setter boolsk verdi deretter
     const isRegulert = resultat < sub.year;
+
+    let resultat = sub.year;
+    if(isRegulert){
+    // Beregner delverdien ved å dele sub.maxfamilyvalue på antall medlemmer med samme abonnement
+    resultat = sub.maxfamilyvalue / sameSubscriptionCount;
+    }
+
 
     // Returnerer resultat og boolean verdi
     return { resultat, isRegulert };
