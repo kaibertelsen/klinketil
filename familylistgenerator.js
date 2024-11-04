@@ -121,7 +121,7 @@ function controllFamilyMaxLimit(objectsArray, totalvalue) {
         return acc;
     }, {});
 
-    // Konverter det akkumulerte objektet til en array hvis ønskelig
+    // Konverter det akkumulerte objektet til en array
     const resultArray = Object.values(combinedObjects);
 
     // Variabel for å holde total summen av de laveste verdiene
@@ -135,13 +135,18 @@ function controllFamilyMaxLimit(objectsArray, totalvalue) {
         // Legg til den laveste verdien til totalSummen
         totalSum += minValue;
 
+
+        const periodselector = document.getElementById("periodeselector");
+        const periodselectorvalue = periodselector.value;
+        const selectedText = periodselector.options[periodselector.selectedIndex].text;
+
         // Hvis value er større enn maxvalue, utfør oppdateringen av textelementene
         if (obj.value > obj.maxvalue) {
-            const newValue = obj.maxvalue / obj.textelement.length;
+            const newValue = (obj.maxvalue / obj.textelement.length)/12*periodselector.value;
             
             // Oppdater textContent og sett fargen til mørkerød for hvert textelement
             obj.textelement.forEach(textelement => {
-                textelement.textContent = newValue;
+                textelement.textContent = bigvalutaLayout(newValue)+" kr/"+selectedText;
                 textelement.style.color = "#8B0000"; // Sett tekstfargen til mørkerød
             });
         }
@@ -153,8 +158,3 @@ function controllFamilyMaxLimit(objectsArray, totalvalue) {
 
 
 
-
-
-
-
-    
