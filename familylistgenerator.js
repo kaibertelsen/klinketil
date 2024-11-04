@@ -58,12 +58,7 @@ function makeFamilyList(members){
                 subname.textContent = sub.name;
 
                 const subdescription = rowsub.querySelector(".subscriptiondescription");
-                if(sub?.description){
-                    subdescription.textContent = sub.description;
-                }else{
-                    subdescription.textContent = "-";;
-                }
-                
+        
                 //verdi
                 const subvalue = rowsub.querySelector(".subscriptionvalue");
                 let subscriptionValue = 0;
@@ -71,8 +66,10 @@ function makeFamilyList(members){
                     //dette er er makspris sub må regnes ut seinere
                     let resultatobject = setSubscriptionValueControll(member,members,sub,globalsubscriptions)
                     if(resultatobject.isRegulert){
-                        subvalue.style.color = "#8B0000"; // Sett tekstfargen til mørkerød
-                        subname.textContent = sub.name+" (Jusert etter maxpris)";
+                        subdescription.style.color = "#8B0000"; // Sett tekstfargen til mørkerød
+                        subdescription.textContent = "Makspris pr. famillie "+sub.maxfamilyvalue+"/år";
+                    }else{
+                        subdescription.style.display = "none";
                     }
                     
                     membervalue += (resultatobject.resultat/12)*Number(periodselectorvalue);
