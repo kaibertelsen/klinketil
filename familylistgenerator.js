@@ -112,7 +112,7 @@ function setSubscriptionValueControll(member, members, sub) {
     const sameSubscriptionCount = members.filter(m => m.subscription.airtable === member.subscription.airtable).length;
 
     // Beregner delverdien ved å dele sub.maxvalue på antall medlemmer med samme abonnement
-    const resultat = sub.maxvalue / sameSubscriptionCount;
+    const resultat = sub.maxfamilyvalue / sameSubscriptionCount;
 
     // Sjekker om resultat er mindre enn sub.year og setter boolsk verdi deretter
     const isRegulert = resultat < sub.year;
