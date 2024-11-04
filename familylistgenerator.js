@@ -71,7 +71,7 @@ function makeFamilyList(members){
                     //dette er er makspris sub må regnes ut seinere
                     let resultatobject = setSubscriptionValueControll(member,members,sub,globalsubscriptions)
                     if(resultatobject.isRegulert){
-                        textelement.style.color = "#8B0000"; // Sett tekstfargen til mørkerød
+                        subvalue.style.color = "#8B0000"; // Sett tekstfargen til mørkerød
                         subname.textContent = sub.name+" (Jusert etter maxpris)";
                     }
                     
