@@ -68,6 +68,7 @@ function makeFamilyList(members){
                     if(resultatobject.isRegulert){
                         subdescription.style.color = "#8B0000"; // Sett tekstfargen til mørkerød
                         subdescription.textContent = "Makspris pr. famillie "+sub.maxfamilyvalue+"/år";
+                        subdescription.style.display = "block";
                     }
                     
                     membervalue += (resultatobject.resultat/12)*Number(periodselectorvalue);
