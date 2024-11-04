@@ -68,7 +68,7 @@ function makeFamilyList(members){
                     if(resultatobject.isRegulert){
                         subvalue.style.color = "#8B0000"; // Sett tekstfargen til mørkerød
                         subdescription.style.color = "#8B0000"; // Sett tekstfargen til mørkerød
-                        subdescription.textContent = "Makspris pr. famillie "+sub.maxfamilyvalue+"/år";
+                        subdescription.textContent = "Makspris/ famillie "+sub.maxfamilyvalue+"kr/år";
                         subdescription.style.display = "block";
                     }
                     
