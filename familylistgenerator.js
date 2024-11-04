@@ -75,11 +75,11 @@ function makeFamilyList(members){
                         subname.textContent = sub.name+" (Jusert etter maxpris)";
                     }
                     
-                    membervalue += resultatobject.resultat;
+                    membervalue += (resultatobject.resultat/12)*Number(periodselectorvalue);
                     subscriptionValue = (resultatobject.resultat/12)*Number(periodselectorvalue);
 
                 }else{
-                    membervalue += subscriptionValue;
+                    membervalue += (sub.value/sub.intervall)*Number(periodselectorvalue)
                     subscriptionValue = (sub.value/sub.intervall)*Number(periodselectorvalue);
                 }
 
