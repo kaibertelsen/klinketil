@@ -95,23 +95,25 @@ function findSubscriptionforThisMember(member,subscription){
 return memberssubscription;
 }
 
-function memberControllSubscription(member,subscription){
-
-    if(subscription?.agefrom || subscription?.ageto ){
+function memberControllSubscription(member, subscription) {
+    if (subscription?.agefrom || subscription?.ageto) {
         // Abonnementet har aldersbegrensning
-        if (member.memberage>subscription.agefrom && member.memberage<subscription.ageto){
-            //medlemet er innafor aldersbegrensningen
+        if (member.memberage >= subscription.agefrom && member.memberage < subscription.ageto) {
+            // Medlemmet er innenfor aldersbegrensningen
             return subscription;
-        }else{
-            //medlemmer er ikke innafor aldersbegrensningen
-            console.log("Er utafor");
-            if(subscription?.linksubscription){
-            return findLinkedSubscriptionForMember(ubscription.linksubscription);
+        } else {
+            // Medlemmet er utenfor aldersbegrensningen
+            console.log("Er utenfor aldersbegrensningen");
+            if (subscription?.linksubscription) {
+                // Finn tilknyttet abonnement hvis linksubscription er satt
+                return findLinkedSubscriptionForMember(subscription.linksubscription);
             }
         }
     }
-    return subscription
+    // Returnerer abonnementet hvis det ikke har aldersbegrensning eller medlemmet er innenfor aldersbegrensningen
+    return subscription;
 }
+
 
 function findLinkedSubscriptionForMember(linkedsubscriptionId){
     for(var i = 0;i<linkedsubscriptionId.length;i++){
