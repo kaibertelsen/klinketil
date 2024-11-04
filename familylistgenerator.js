@@ -114,8 +114,9 @@ function setSubscriptionValueControll(member, members, sub, familyObject) {
         (m.memberage < 18 || familyObject.admin.includes(m.airtable))
     ).length;
 
-    // Sjekker om resultat er mindre enn sub.year og setter boolsk verdi deretter
-    const isRegulert = resultat < sub.year;
+    // Sjekker om controllsum er mindre enn sub.year og setter boolsk verdi deretter
+    const controllsum = sub.maxfamilyvalue / sameSubscriptionCount;
+    const isRegulert = controllsum < sub.year;
 
     let resultat = sub.year;
     if(isRegulert){
