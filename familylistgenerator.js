@@ -58,7 +58,7 @@ function makeFamilyList(members){
                 subname.textContent = sub.name;
 
                 const subdescription = rowsub.querySelector(".subscriptiondescription");
-        
+                subdescription.style.display = "none";
                 //verdi
                 const subvalue = rowsub.querySelector(".subscriptionvalue");
                 let subscriptionValue = 0;
@@ -68,8 +68,6 @@ function makeFamilyList(members){
                     if(resultatobject.isRegulert){
                         subdescription.style.color = "#8B0000"; // Sett tekstfargen til mørkerød
                         subdescription.textContent = "Makspris pr. famillie "+sub.maxfamilyvalue+"/år";
-                    }else{
-                        subdescription.style.display = "none";
                     }
                     
                     membervalue += (resultatobject.resultat/12)*Number(periodselectorvalue);
