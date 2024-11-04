@@ -76,7 +76,7 @@ function makeFamilyList(members){
                     }
                     
                     membervalue += resultatobject.resultat;
-                    subscriptionValue = (resultatobject.resultat/sub.intervall)*Number(periodselectorvalue);
+                    subscriptionValue = (resultatobject.resultat/12)*Number(periodselectorvalue);
 
                 }else{
                     membervalue += subscriptionValue;
