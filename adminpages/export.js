@@ -332,6 +332,9 @@ function calcMysharArray(dataArray) {
             }
         }
 
+        item.Amount = Number(parseFloat(item.Amount).toFixed(1));
+        item.Timer = Number(parseFloat(item.Timer).toFixed(1));
+
         // Oppdater 'Description' ved å legge til 'Nr' først, deretter verdien fra 'Timer' og teksten "Timer"
         item.Description = `${item.Nr} ${item.Description} ${item.Timer} Timer`;
 
@@ -359,6 +362,10 @@ function calcMysharArray(dataArray) {
         // Konverter datoformat fra "2024-10-03" til "03.10.2024"
         const [year, month, day] = item.ClubTransactionDate.split('-');
         item.ClubTransactionDate = `${day}.${month}.${year}`;
+
+        
+
+
 
         // Returner et nytt objekt med nøklene i ønsket rekkefølge
         if(item.ClubId == "3983"){
