@@ -361,6 +361,20 @@ function calcMysharArray(dataArray) {
         item.ClubTransactionDate = `${day}.${month}.${year}`;
 
         // Returner et nytt objekt med nøklene i ønsket rekkefølge
+        if(item.ClubId == "3983"){
+            //hvis det er horten
+        return {
+            UserId: item.UserId,
+            Age: item.Age,
+            FirstName: item.Name,
+            LastName: item.LastName,
+            ClubId: item.ClubId,
+            ClubName: item.ClubName,
+            Amount: item.Amount,
+            TransactionDate: item.ClubTransactionDate,
+            Description: item.Description
+        };
+        }else{
         return {
             UserId: item.UserId,
             Age: item.Age,
@@ -372,6 +386,11 @@ function calcMysharArray(dataArray) {
             ClubTransactionDate: item.ClubTransactionDate,
             Description: item.Description
         };
+    }
+        
+
+
+
     });
 }
 
