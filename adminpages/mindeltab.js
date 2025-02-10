@@ -157,7 +157,30 @@ document.getElementById("xlstargetexport").addEventListener("click", () => {
     const dateSelector = document.getElementById("mindeldateselector");
     const dateRangeName = dateSelector.options[dateSelector.selectedIndex].text;
 
-    exportXLS(mindellistG, "Mindel-eksport-"+dateRangeName);
+    // Transformer data ved å endre nøklene, rekkefølgen og formatere datoen
+    const exportData = mindellistG.map(row => {
+        // Formater datoen
+        let dateObj = new Date(row.date);
+        let formattedDate = isNaN(dateObj)
+            ? "-"
+            : dateObj.toLocaleDateString('no-NO', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric'
+            });
+
+        // Returner det transformerte objektet
+        return {
+            Dato: formattedDate,
+            Navn: row.name,
+            Kommentar: row.komment,
+            Beløp: row.value
+        };
+    });
+
+    // Kall funksjonen for å eksportere dataene
+    exportXLS(exportData, `Mindel-eksport-${dateRangeName}`);
 });
+
 
 
