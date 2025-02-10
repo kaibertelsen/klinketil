@@ -81,6 +81,10 @@ function makeTargetValueList(data) {
         list.appendChild(mindelElement);
     });
 
+    document.getElementById("valuemindel").textContent = gValue.toLocaleString('no-NO', { style: 'currency', currency: 'NOK', minimumFractionDigits: 0 });
+
+    
+
     console.log(`Totalverdi: ${gValue.toLocaleString('no-NO', { style: 'currency', currency: 'NOK', minimumFractionDigits: 0 })}`);
 }
 
