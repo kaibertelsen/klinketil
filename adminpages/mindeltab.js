@@ -24,6 +24,18 @@ let returdataclean = rawdatacleaner(data);
 
 function mindelProresponse(data){
 
-console.log(data);
 
+
+    if(data.fields.timersjson.length>0){
+    //da er det føringer lag liste
+    let targetlistvalue = data.fields.timersjson;
+    makeTargetValueList(targetlistvalue);
+    }
+
+}
+
+function makeTargetValueList(data){
+
+    console.log(data);
+    
 }
