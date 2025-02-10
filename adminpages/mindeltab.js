@@ -9,7 +9,7 @@ function mindelControll(){
 }
 
 function mindelControllResponse(data){
-let returdataclean = totalprosject = rawdatacleaner(data);
+let returdataclean = rawdatacleaner(data);
 
     if(returdataclean[0]?.projectairtable){
         //har tilgang på et prosjekt
@@ -18,7 +18,6 @@ let returdataclean = totalprosject = rawdatacleaner(data);
 
         document.getElementById("mindeltabbutton").style.display = "inline-block";
         document.getElementById("mindeltabcontent").style.display = "block";
-
     }
     
 }
