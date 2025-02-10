@@ -9,10 +9,11 @@ function mindelControll(){
 }
 
 function mindelControllResponse(data){
+let returdataclean = totalprosject = rawdatacleaner(data);
 
-    if(data.fields?.projectairtable){
+    if(returdataclean[0]?.projectairtable){
         //har tilgang på et prosjekt
-        let proid = data.fields.projectairtable[0];
+        let proid = returdataclean[0].projectairtable[0];
         GETairtable("apphvNDlBgA5T08CM","tblBFI0kCc5dfSac2",proid,"mindelProresponse")
 
         document.getElementById("mindeltabbutton").style.display = "inline-block";
