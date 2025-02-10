@@ -1,6 +1,5 @@
 
 document.getElementById("mindeltabbutton").style.display = "none";
-document.getElementById("mindeltabcontent").style.display = "none";
 
 function mindelControll(){
     let userair = userairtable
@@ -17,7 +16,6 @@ let returdataclean = rawdatacleaner(data);
         GETairtable("apphvNDlBgA5T08CM","tblBFI0kCc5dfSac2",proid,"mindelProresponse")
 
         document.getElementById("mindeltabbutton").style.display = "inline-block";
-        document.getElementById("mindeltabcontent").style.display = "block";
     }
     
 }
