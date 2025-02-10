@@ -150,3 +150,14 @@ function loadTargetdateSelector(){
     options.push(optionfromstart);
     loadselector(document.getElementById("mindeldateselector"),options);
 }
+
+
+document.getElementById("xlstargetexport").addEventListener("click", () => {
+    // Hent navnet på valgt dato fra selectoren
+    const dateSelector = document.getElementById("mindeldateselector");
+    const dateRangeName = dateSelector.options[dateSelector.selectedIndex].text;
+
+    exportXLS(mindellistG, "Mindel-eksport-"+dateRangeName);
+});
+
+
