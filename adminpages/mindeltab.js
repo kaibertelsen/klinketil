@@ -1,6 +1,7 @@
 
 document.getElementById("mindeltabbutton").style.display = "none";
 
+let mindellistG = [];
 function mindelControll(){
     let userair = userairtable
     let body = airtablebodylistAND({userairtable: userair});
@@ -29,19 +30,33 @@ function mindelProresponse(data){
     if(data.fields.timersjson.length>0){
     //da er det føringer lag liste
     let targetlistvalue = data.fields.timersjson;
-    makeTargetValueList(convertJsonStringsToObjects(targetlistvalue));
+    mindellistG = convertJsonStringsToObjects(targetlistvalue);
+    makeTargetValueList(mindellistG);
     }
 
 }
 
+document.getElementById("mindeldateselector").addEventListener("change", () => {
+    makeTargetValueList(mindellistG); // Kjør funksjonen med dataene når perioden endres
+});
+
 function makeTargetValueList(data) {
     console.log(data);
-      // Sorter data basert på dato i stigende rekkefølge
-      let filteredData = data.sort((a, b) => {
-        let dateA = new Date(a.date);
-        let dateB = new Date(b.date);
-        return dateA - dateB; // Sorter stigende
+
+    // Hent valgt dato-intervall fra selectoren
+    const dateSelector = document.getElementById("mindeldateselector");
+    const dateRange = dateSelector.value.split(","); // F.eks. "2025-02-01,2025-02-28"
+    const startDate = new Date(dateRange[0]);
+    const endDate = new Date(dateRange[1]);
+
+    // Filtrer data basert på dato-intervall
+    let filteredData = data.filter(row => {
+        let dateObj = new Date(row.date);
+        return dateObj >= startDate && dateObj <= endDate;
     });
+
+    // Sorter data basert på dato i stigende rekkefølge
+    filteredData.sort((a, b) => new Date(a.date) - new Date(b.date));
 
     const list = document.getElementById("mindellist");
     const elementLibrary = document.getElementById("mindelelementlibrary");
@@ -55,7 +70,7 @@ function makeTargetValueList(data) {
 
     let gValue = 0;
 
-    filteredData.forEach((row, index) => {
+    filteredData.forEach((row) => {
         const mindelElement = nodeElement.cloneNode(true);
 
         // Formater og sett dato
@@ -87,12 +102,12 @@ function makeTargetValueList(data) {
         list.appendChild(mindelElement);
     });
 
+    // Oppdater totalverdi
     document.getElementById("valuemindel").textContent = gValue.toLocaleString('no-NO', { style: 'currency', currency: 'NOK', minimumFractionDigits: 0 });
-
-    
 
     console.log(`Totalverdi: ${gValue.toLocaleString('no-NO', { style: 'currency', currency: 'NOK', minimumFractionDigits: 0 })}`);
 }
+
 
 function convertJsonStringsToObjects(jsonStrings) {
     return jsonStrings.map((jsonString, index) => {
