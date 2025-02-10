@@ -2,6 +2,7 @@
 document.getElementById("mindeltabbutton").style.display = "none";
 
 let mindellistG = [];
+let activTargetlist = [];
 function mindelControll(){
     let userair = userairtable
     let body = airtablebodylistAND({userairtable: userair});
@@ -69,6 +70,7 @@ function makeTargetValueList(data) {
         return name.includes(searchQuery) || value.includes(searchQuery);
     });
 
+    
     // Sorter data basert på dato i synkende rekkefølge (nyeste først)
     filteredData.sort((a, b) => new Date(b.date) - new Date(a.date));
 
@@ -83,6 +85,7 @@ function makeTargetValueList(data) {
     document.getElementById("countermindel").textContent = `${filteredData.length} stk.`;
 
     let gValue = 0;
+    activTargetlist = filteredData;
 
     filteredData.forEach((row, index) => {
         const mindelElement = nodeElement.cloneNode(true);
@@ -156,9 +159,9 @@ document.getElementById("xlstargetexport").addEventListener("click", () => {
     // Hent navnet på valgt dato fra selectoren
     const dateSelector = document.getElementById("mindeldateselector");
     const dateRangeName = dateSelector.options[dateSelector.selectedIndex].text;
-
+   
     // Transformer data ved å endre nøklene, rekkefølgen og formatere datoen
-    const exportData = mindellistG.map(row => {
+    const exportData = activTargetlist.map(row => {
         // Formater datoen
         let dateObj = new Date(row.date);
         let formattedDate = isNaN(dateObj)
