@@ -35,7 +35,12 @@ function mindelProresponse(data){
 
 function makeTargetValueList(data) {
     console.log(data);
-    let filteredData = data;
+      // Sorter data basert på dato i stigende rekkefølge
+      let filteredData = data.sort((a, b) => {
+        let dateA = new Date(a.date);
+        let dateB = new Date(b.date);
+        return dateA - dateB; // Sorter stigende
+    });
 
     const list = document.getElementById("mindellist");
     const elementLibrary = document.getElementById("mindelelementlibrary");
