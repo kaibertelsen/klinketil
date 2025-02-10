@@ -84,8 +84,13 @@ function makeTargetValueList(data) {
 
     let gValue = 0;
 
-    filteredData.forEach((row) => {
+    filteredData.forEach((row, index) => {
         const mindelElement = nodeElement.cloneNode(true);
+
+        // Annenhver rad får klassen "odd"
+        if (index % 2 === 0) {
+            mindelElement.classList.add('odd');
+        }
 
         // Formater og sett dato
         let date = mindelElement.querySelector('.date');
