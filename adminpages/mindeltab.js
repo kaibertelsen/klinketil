@@ -25,11 +25,10 @@ let returdataclean = rawdatacleaner(data);
 function mindelProresponse(data){
 
 
-
     if(data.fields.timersjson.length>0){
     //da er det føringer lag liste
     let targetlistvalue = data.fields.timersjson;
-    makeTargetValueList(targetlistvalue);
+    makeTargetValueList(convertJsonStringsToObjects(targetlistvalue));
     }
 
 }
@@ -37,5 +36,21 @@ function mindelProresponse(data){
 function makeTargetValueList(data){
 
     console.log(data);
-    
+
+}
+
+
+function convertJsonStringsToObjects(jsonStrings) {
+    return jsonStrings.map((jsonString, index) => {
+        try {
+           
+           // Parse hoved JSON-streng til et objekt
+           const data = JSON.parse(jsonString);
+          
+            return data;
+        } catch (error) {
+            console.error(`Feil ved parsing av JSON-streng på indeks ${index}:`, jsonString, error);
+            return null; // Returner null hvis parsing feiler
+        }
+    });
 }
