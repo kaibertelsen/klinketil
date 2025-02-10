@@ -69,8 +69,8 @@ function makeTargetValueList(data) {
         return name.includes(searchQuery) || value.includes(searchQuery);
     });
 
-    // Sorter data basert på dato i stigende rekkefølge
-    filteredData.sort((a, b) => new Date(a.date) - new Date(b.date));
+    // Sorter data basert på dato i synkende rekkefølge (nyeste først)
+    filteredData.sort((a, b) => new Date(b.date) - new Date(a.date));
 
     const list = document.getElementById("mindellist");
     const elementLibrary = document.getElementById("mindelelementlibrary");
