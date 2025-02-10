@@ -26,7 +26,6 @@ let returdataclean = rawdatacleaner(data);
 
 function mindelProresponse(data){
 
-
     if(data.fields.timersjson.length>0){
     //da er det føringer lag liste
     let targetlistvalue = data.fields.timersjson;
@@ -40,19 +39,34 @@ document.getElementById("mindeldateselector").addEventListener("change", () => {
     makeTargetValueList(mindellistG); // Kjør funksjonen med dataene når perioden endres
 });
 
+document.getElementById("mindelsearchfield").addEventListener("input", () => {
+    makeTargetValueList(mindellistG); // Oppdater listen ved endring i søkefeltet
+});
+
 function makeTargetValueList(data) {
     console.log(data);
 
     // Hent valgt dato-intervall fra selectoren
     const dateSelector = document.getElementById("mindeldateselector");
-    const dateRange = dateSelector.value.split(","); // F.eks. "2025-02-01,2025-02-28"
+    const dateRange = dateSelector.value.split(","); 
     const startDate = new Date(dateRange[0]);
     const endDate = new Date(dateRange[1]);
+
+    // Hent søkeord fra søkefeltet
+    const searchField = document.getElementById("mindelsearchfield");
+    const searchQuery = searchField.value.trim().toLowerCase();
 
     // Filtrer data basert på dato-intervall
     let filteredData = data.filter(row => {
         let dateObj = new Date(row.date);
         return dateObj >= startDate && dateObj <= endDate;
+    });
+
+    // Filtrer videre basert på søkeord (navn eller verdi)
+    filteredData = filteredData.filter(row => {
+        const name = (row.name || "").toLowerCase();
+        const value = row.value ? row.value.toString() : "";
+        return name.includes(searchQuery) || value.includes(searchQuery);
     });
 
     // Sorter data basert på dato i stigende rekkefølge
@@ -80,7 +94,7 @@ function makeTargetValueList(data) {
             day: '2-digit',
             month: 'short',
             year: 'numeric'
-        }).replace('.', ''); // Fjerner ekstra punktum i månedsformatet
+        }).replace('.', ''); 
 
         // Sett navn
         let name = mindelElement.querySelector('.name');
@@ -107,6 +121,7 @@ function makeTargetValueList(data) {
 
     console.log(`Totalverdi: ${gValue.toLocaleString('no-NO', { style: 'currency', currency: 'NOK', minimumFractionDigits: 0 })}`);
 }
+
 
 
 function convertJsonStringsToObjects(jsonStrings) {
