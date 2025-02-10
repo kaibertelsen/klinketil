@@ -10,9 +10,8 @@ function loadScript(url) {
 
 // Liste over CDN-URL-er som skal lastes inn
 const cdnScripts = [
-    "https://kaibertelsen.github.io/klinketil/adminpages/afterclick-functions.js",
+    "https://kaibertelsen.github.io/klinketil/app/appstartup.jss",
     "https://kaibertelsen.github.io/klinketil/adminpages/createlements.js",
-    "https://kaibertelsen.github.io/klinketil/adminpages/mindeltab.js",
     "https://kaibertelsen.github.io/klinketil/adminpages/export.js"
 ];
 

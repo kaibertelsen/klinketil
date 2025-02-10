@@ -10,10 +10,6 @@ function canclerowEdit(editrow){
    
   }
   
-  
-  
-  
-  
   function canclerowAdd(row){
       document.getElementById("row-new").style.display = "none";
       document.getElementById("add-new").style.display = "inline-block";
@@ -63,6 +59,7 @@ function canclerowEdit(editrow){
   
   
   }
+
   function rowdirectClick(rowid){
       //
       const rowelement = document.getElementById(rowid);
@@ -81,6 +78,7 @@ function canclerowEdit(editrow){
       markcheckboxinList(list,classname,checked);
       sumcheckboxElements(checkbox,property);
   }
+
   function markcheckboxinList(list,classname,checked){
       const listcheckboxes = list.getElementsByClassName(classname);
       for (var i = 0;i<listcheckboxes.length;i++){
@@ -97,6 +95,7 @@ function canclerowEdit(editrow){
       sumcheckboxElements(checkbox,property);
   
   }
+
   function runSelectingAction(list,id,property){
   const actionbuttonObject = property.actionbuttons[id];
   //lage array med airtable og approvalstatus
