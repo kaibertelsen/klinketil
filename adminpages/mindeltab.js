@@ -4,7 +4,10 @@ document.getElementById("mindeltabbutton").style.display = "none";
 function mindelControll(){
     let userair = userairtable
     let body = airtablebodylistAND({userairtable: userair});
-    Getlistairtable("apphvNDlBgA5T08CM","tbl5mpWgP9jlHKpa7",body,"mindelControllResponse")
+    Getlistairtable("apphvNDlBgA5T08CM","tbl5mpWgP9jlHKpa7",body,"mindelControllResponse");
+
+    loadTargetdateSelector();
+
 }
 
 function mindelControllResponse(data){
@@ -66,7 +69,7 @@ function makeTargetValueList(data) {
 
         // Sett navn
         let name = mindelElement.querySelector('.name');
-        name.textContent = row.navn || "-";
+        name.textContent = row.name || "-";
 
         // Sett kommentar
         let komment = mindelElement.querySelector('.komment');
@@ -91,8 +94,6 @@ function makeTargetValueList(data) {
     console.log(`Totalverdi: ${gValue.toLocaleString('no-NO', { style: 'currency', currency: 'NOK', minimumFractionDigits: 0 })}`);
 }
 
-
-
 function convertJsonStringsToObjects(jsonStrings) {
     return jsonStrings.map((jsonString, index) => {
         try {
@@ -106,4 +107,13 @@ function convertJsonStringsToObjects(jsonStrings) {
             return null; // Returner null hvis parsing feiler
         }
     });
+}
+
+function loadTargetdateSelector(){
+    //hente datoer for 3 mnd tilbake i tid
+    let startvalue = "2010-01-01,"+getTodayInISOFormat();
+    var optionfromstart = {text:"Fra start",value:startvalue};
+    var options = getMonthDates(3);
+    options.push(optionfromstart);
+    loadselector(document.getElementById("mindeldateselector"),options);
 }
