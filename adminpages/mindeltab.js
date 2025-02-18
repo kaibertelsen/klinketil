@@ -309,10 +309,10 @@ document.getElementById("savemindelbutton").addEventListener("click", function (
     // Hvis alle feltene er fylt ut, lagre data
     saveRegistration({
         date: dateValue,
-        user: userSearchValue,
-        airtableId: airtableValue,
-        comment: commentValue,
-        amount: Number(amountValue)
+        name: userSearchValue,
+        airtable: airtableValue,
+        komment: commentValue,
+        value: Number(amountValue)
     });
 
 
@@ -331,8 +331,8 @@ function saveRegistration(data) {
         date: data.date || new Date().toISOString().split("T")[0], // Standard til dagens dato (YYYY-MM-DD)
         komment: data.komment || "Ingen kommentar",
         value: data.value ? Number(data.value) : 0, // Konverter til tall
-        airtable: data.airtable || "",
-        name: data.user || "Ukjent navn",
+        airtable: data.airtable,
+        name: data.user,
         project: proIdg
     };
 
