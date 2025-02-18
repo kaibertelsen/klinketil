@@ -313,7 +313,7 @@ document.getElementById("savemindelbutton").addEventListener("click", function (
     saveRegistration({
         date: dateValue,
         name: userSearchValue,
-        airtable: airtableValue,
+        userairtable: airtableValue,
         memberid:memberInputValue,
         komment: commentValue,
         value: Number(amountValue)
@@ -335,14 +335,11 @@ function saveRegistration(data) {
         date: data.date || new Date().toISOString().split("T")[0], // Standard til dagens dato (YYYY-MM-DD)
         komment: data.komment || "Ingen kommentar",
         value: data.value ? Number(data.value) : 0, // Konverter til tall
-        airtable: data.airtable,
+        user: data.userairtable,
         name: data.name,
         memberid:data.memberid,
         project: proIdg
     };
-
-    // Legg til i mindellistG
-    mindellistG.push(formattedEntry);
 
     // Lagre på server
    savrToServerRegistration(formattedEntry);
@@ -350,7 +347,6 @@ function saveRegistration(data) {
     // Nullstill inputfeltene
     resetFields();
 
-    makeTargetValueList(mindellistG);
 }
 
 function savrToServerRegistration(data){
@@ -365,7 +361,7 @@ function savrToServerRegistration(data){
         klient:klientid,
         name:data.name,
         memberid:data.memberid,
-        user:[data.airtable]
+        user:[data.userairtable]
     };
 
     POSTairtable("apphvNDlBgA5T08CM","tbl7xtS00BVviO8kk",JSON.stringify(body),"responseNewRawMindel");
@@ -373,6 +369,11 @@ function savrToServerRegistration(data){
 }
 function responseNewRawMindel(data){
     console.log(data);
+    if(data.fields?.json){
+    // Legg til i mindellistG
+    mindellistG.push(JSON.parse(data.fields.json));
+    makeTargetValueList(mindellistG);
+    }    
 }
 
 function resetFields() {
