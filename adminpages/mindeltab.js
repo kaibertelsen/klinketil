@@ -127,6 +127,7 @@ function makeTargetValueList(data) {
                 let confirmDelete = confirm("Vil du slette denne føringen?");
                 if (confirmDelete) {
                    // mindelElement.remove(); // Fjerner elementet fra DOM
+                   DELETEairtable("baseId","tableId",row.airtable,"responseDeleteMindelRow")
                     console.log("Element slettet:", row); // Kan erstattes med en faktisk slettefunksjon
                 }
             });
@@ -142,7 +143,11 @@ function makeTargetValueList(data) {
 
     console.log(`Totalverdi: ${gValue.toLocaleString('no-NO', { style: 'currency', currency: 'NOK', minimumFractionDigits: 0 })}`);
 }
+function responseDeleteMindelRow(data){
+console.log(data);
 
+
+}
 function convertJsonStringsToObjects(jsonStrings) {
     return jsonStrings.map((jsonString, index) => {
         try {
