@@ -232,6 +232,7 @@ resultContainer.classList.add("search-results");
 searchInput.parentNode.appendChild(resultContainer); // Legger dropdown under inputfeltet
 
 const hiddenAirtableInput = document.getElementById("mindelselectedUserAirtable"); // Skjult felt for Airtable ID
+const hiddenMemberInput = document.getElementById("mindelselectedMemberid");
 
 searchInput.addEventListener("input", function () {
     const searchTerm = searchInput.value.toLowerCase().trim();
@@ -265,6 +266,7 @@ searchInput.addEventListener("input", function () {
             e.preventDefault();
             searchInput.value = user.name; // Sett valgt navn i input-feltet
             hiddenAirtableInput.value = user.airtable; // Lagre Airtable ID i skjult inputfelt
+            hiddenMemberInput.value = user.memberid;
             resultContainer.innerHTML = ""; // Skjul søkeresultatene
             resultContainer.style.display = "none";
         });
@@ -289,6 +291,7 @@ document.getElementById("savemindelbutton").addEventListener("click", function (
     const dateValue = document.getElementById("mindelnewdateinput").value;
     const userSearchValue = document.getElementById("mindelnewuserSearch").value;
     const airtableValue = document.getElementById("mindelselectedUserAirtable").value;
+    const memberInputValue = document.getElementById("mindelselectedMemberid").value;
     const commentValue = document.getElementById("mindelkomment").value;
     const amountValue = document.getElementById("mindelnewvalue").value;
 
@@ -311,6 +314,7 @@ document.getElementById("savemindelbutton").addEventListener("click", function (
         date: dateValue,
         name: userSearchValue,
         airtable: airtableValue,
+        memberid:memberInputValue,
         komment: commentValue,
         value: Number(amountValue)
     });
@@ -333,6 +337,7 @@ function saveRegistration(data) {
         value: data.value ? Number(data.value) : 0, // Konverter til tall
         airtable: data.airtable,
         name: data.name,
+        memberid:data.memberid,
         project: proIdg
     };
 
@@ -358,7 +363,8 @@ function savrToServerRegistration(data){
         prosjekt:data.project,
         aklient:[klientairtable],
         klient:klientid,
-        name:data.mane,
+        name:data.name,
+        memberid:data.memberid,
         user:[data.airtable]
     };
 
