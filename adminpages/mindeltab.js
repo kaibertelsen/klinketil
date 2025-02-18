@@ -225,9 +225,8 @@ document.getElementById("xlstargetexport").addEventListener("click", () => {
 });
 
 const searchInput = document.getElementById("mindelnewuserSearch");
-const resultContainer = document.createElement("div");
-resultContainer.classList.add("search-results");
-searchInput.parentNode.appendChild(resultContainer); // Legger dropdown under inputfeltet
+const resultContainer = document.querySelector(".search-results");
+const hiddenAirtableInput = document.getElementById("mindelselectedUserAirtable"); // Skjult felt for Airtable ID
 
 searchInput.addEventListener("input", function () {
     const searchTerm = searchInput.value.toLowerCase().trim();
@@ -246,41 +245,26 @@ searchInput.addEventListener("input", function () {
     if (results.length === 0) {
         resultContainer.innerHTML = "<p class='no-result'>Ingen treff</p>";
         resultContainer.style.display = "block";
-        resultContainer.style.width = searchInput.offsetWidth + "px"; // Standardbredde
         return;
     }
 
-    let maxWidth = searchInput.offsetWidth; // Sett standard bredde lik inputfeltet
+    resultContainer.style.display = "block";
 
     // Vis søkeresultatene som klikkbare lenker
     results.forEach(user => {
-        const userItem = document.createElement("a"); // Oppretter en lenke
+        const userItem = document.createElement("a");
         userItem.classList.add("search-item");
         userItem.textContent = user.name;
-        userItem.href = "#"; // Hindrer standardlenke
+        userItem.href = "#";
         userItem.addEventListener("click", function (e) {
             e.preventDefault();
             searchInput.value = user.name; // Sett valgt navn i input-feltet
+            hiddenAirtableInput.value = user.airtable; // Lagre Airtable ID i skjult inputfelt
             resultContainer.innerHTML = ""; // Skjul søkeresultatene
-            resultContainer.style.display = "none"; // Skjul containeren
+            resultContainer.style.display = "none";
         });
-
         resultContainer.appendChild(userItem);
-
-        // Finn bredde basert på lengste navn
-        let tempSpan = document.createElement("span");
-        tempSpan.style.visibility = "hidden";
-        tempSpan.style.position = "absolute";
-        tempSpan.style.whiteSpace = "nowrap";
-        tempSpan.textContent = user.name;
-        document.body.appendChild(tempSpan);
-        maxWidth = Math.max(maxWidth, tempSpan.offsetWidth + 20); // Litt ekstra padding
-        document.body.removeChild(tempSpan);
     });
-
-    // Sett bredde basert på det lengste navnet
-    resultContainer.style.width = maxWidth + "px";
-    resultContainer.style.display = "block";
 });
 
 // Skjul søkeresultatene og tøm inputfeltet hvis ingen treff velges
