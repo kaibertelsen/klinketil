@@ -342,14 +342,14 @@ function saveRegistration(data) {
     };
 
     // Lagre på server
-   savrToServerRegistration(formattedEntry);
+   saveToServerRegistration(formattedEntry);
 
     // Nullstill inputfeltene
     resetFields();
 
 }
 
-function savrToServerRegistration(data){
+function saveToServerRegistration(data){
 
     let body = {
         dato:data.date,
@@ -361,7 +361,7 @@ function savrToServerRegistration(data){
         klient:klientid,
         name:data.name,
         memberid:data.memberid,
-        user:[data.userairtable]
+        user:[data.user]
     };
 
     POSTairtable("apphvNDlBgA5T08CM","tbl7xtS00BVviO8kk",JSON.stringify(body),"responseNewRawMindel");
