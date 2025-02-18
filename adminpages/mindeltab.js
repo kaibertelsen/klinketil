@@ -355,7 +355,10 @@ function savrToServerRegistration(data){
         kommentar:data.komment,
         value:String(data.value),
         project:[data.project],
+        prosjekt:data.project,
         aklient:[klientairtable],
+        klient:klientid,
+        name:data.mane,
         user:[data.airtable],
     };
 
