@@ -89,12 +89,12 @@ function makeTargetValueList(data) {
 
     filteredData.forEach((row, index) => {
         const mindelElement = nodeElement.cloneNode(true);
-
+    
         // Annenhver rad får klassen "odd"
         if (index % 2 === 0) {
             mindelElement.classList.add('odd');
         }
-
+    
         // Formater og sett dato
         let date = mindelElement.querySelector('.date');
         let dateObj = new Date(row.date);
@@ -102,27 +102,40 @@ function makeTargetValueList(data) {
             day: '2-digit',
             month: 'short',
             year: 'numeric'
-        }).replace('.', ''); 
-
+        }).replace('.', '');
+    
         // Sett navn
         let name = mindelElement.querySelector('.name');
         name.textContent = row.name || "-";
-
+    
         // Sett kommentar
         let komment = mindelElement.querySelector('.komment');
         komment.textContent = row.komment || "-";
-
+    
         // Formater og sett verdi
         let value = mindelElement.querySelector('.value');
         let numericValue = Number(row.value) || 0;
         value.textContent = numericValue.toLocaleString('no-NO', { style: 'currency', currency: 'NOK', minimumFractionDigits: 0 });
-
+    
         // Legg til i totalverdi
         gValue += numericValue;
-
+    
+        // Sletteknapp med bekreftelsesdialog
+        const deletebutton = mindelElement.querySelector('.deletebutton');
+        if (deletebutton) {
+            deletebutton.addEventListener("click", () => {
+                let confirmDelete = confirm("Vil du slette denne føringen?");
+                if (confirmDelete) {
+                   // mindelElement.remove(); // Fjerner elementet fra DOM
+                    console.log("Element slettet:", row); // Kan erstattes med en faktisk slettefunksjon
+                }
+            });
+        }
+    
         // Legg elementet til i listen
         list.appendChild(mindelElement);
     });
+    
 
     // Oppdater totalverdi
     document.getElementById("valuemindel").textContent = gValue.toLocaleString('no-NO', { style: 'currency', currency: 'NOK', minimumFractionDigits: 0 });
