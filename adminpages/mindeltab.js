@@ -227,14 +227,15 @@ document.getElementById("xlstargetexport").addEventListener("click", () => {
 const searchInput = document.getElementById("mindelnewuserSearch");
 const resultContainer = document.createElement("div");
 resultContainer.classList.add("search-results");
-searchInput.parentNode.appendChild(resultContainer); // Legger listen under inputfeltet
+searchInput.parentNode.appendChild(resultContainer); // Legger dropdown under inputfeltet
 
 searchInput.addEventListener("input", function () {
     const searchTerm = searchInput.value.toLowerCase().trim();
     resultContainer.innerHTML = ""; // Tøm søkeresultatene
 
     if (searchTerm.length === 0) {
-        return; // Ikke vis noe hvis feltet er tomt
+        resultContainer.style.display = "none"; // Skjul hvis ingen input
+        return;
     }
 
     // Filtrer treff basert på `name`
@@ -244,28 +245,50 @@ searchInput.addEventListener("input", function () {
 
     if (results.length === 0) {
         resultContainer.innerHTML = "<p class='no-result'>Ingen treff</p>";
+        resultContainer.style.display = "block";
+        resultContainer.style.width = searchInput.offsetWidth + "px"; // Standardbredde
         return;
     }
+
+    let maxWidth = searchInput.offsetWidth; // Sett standard bredde lik inputfeltet
 
     // Vis søkeresultatene som klikkbare lenker
     results.forEach(user => {
         const userItem = document.createElement("a"); // Oppretter en lenke
         userItem.classList.add("search-item");
         userItem.textContent = user.name;
-        userItem.href = "#"; // Fjerner standardlenke-funksjon
+        userItem.href = "#"; // Hindrer standardlenke
         userItem.addEventListener("click", function (e) {
-            e.preventDefault(); // Hindrer sidehopp
+            e.preventDefault();
             searchInput.value = user.name; // Sett valgt navn i input-feltet
             resultContainer.innerHTML = ""; // Skjul søkeresultatene
+            resultContainer.style.display = "none"; // Skjul containeren
         });
+
         resultContainer.appendChild(userItem);
+
+        // Finn bredde basert på lengste navn
+        let tempSpan = document.createElement("span");
+        tempSpan.style.visibility = "hidden";
+        tempSpan.style.position = "absolute";
+        tempSpan.style.whiteSpace = "nowrap";
+        tempSpan.textContent = user.name;
+        document.body.appendChild(tempSpan);
+        maxWidth = Math.max(maxWidth, tempSpan.offsetWidth + 20); // Litt ekstra padding
+        document.body.removeChild(tempSpan);
     });
+
+    // Sett bredde basert på det lengste navnet
+    resultContainer.style.width = maxWidth + "px";
+    resultContainer.style.display = "block";
 });
 
-// Skjul søkeresultatene når man klikker utenfor
+// Skjul søkeresultatene og tøm inputfeltet hvis ingen treff velges
 document.addEventListener("click", function (e) {
     if (!searchInput.contains(e.target) && !resultContainer.contains(e.target)) {
         resultContainer.innerHTML = "";
+        resultContainer.style.display = "none"; // Skjul dropdown
+        searchInput.value = ""; // Nullstill inputfeltet
     }
 });
 
