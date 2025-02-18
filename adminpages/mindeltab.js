@@ -288,7 +288,6 @@ document.addEventListener("click", function (e) {
     if (!searchInput.contains(e.target) && !resultContainer.contains(e.target)) {
         resultContainer.innerHTML = "";
         resultContainer.style.display = "none"; // Skjul dropdown
-        searchInput.value = ""; // Nullstill inputfeltet
     }
 });
 
