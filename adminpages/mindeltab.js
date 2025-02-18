@@ -3,6 +3,7 @@ document.getElementById("mindeltabbutton").style.display = "none";
 
 let mindellistG = [];
 let activTargetlist = [];
+var proIdg = "";
 function mindelControll(){
     let userair = userairtable
     let body = airtablebodylistAND({userairtable: userair});
@@ -18,6 +19,7 @@ let returdataclean = rawdatacleaner(data);
     if(returdataclean[0]?.projectairtable){
         //har tilgang på et prosjekt
         let proid = returdataclean[0].projectairtable[0];
+        proIdg = proid;
         GETairtable("apphvNDlBgA5T08CM","tblBFI0kCc5dfSac2",proid,"mindelProresponse")
 
         document.getElementById("mindeltabbutton").style.display = "inline-block";
@@ -331,7 +333,7 @@ function saveRegistration(data) {
         value: data.value ? Number(data.value) : 0, // Konverter til tall
         airtable: data.airtable || "",
         name: data.user || "Ukjent navn",
-        project: data.project || "Ukjent prosjekt"
+        project: proIdg
     };
 
     // Legg til i mindellistG
