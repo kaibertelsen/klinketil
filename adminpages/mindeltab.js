@@ -359,7 +359,7 @@ function savrToServerRegistration(data){
         aklient:[klientairtable],
         klient:klientid,
         name:data.mane,
-        user:[data.airtable],
+        user:[data.airtable]
     };
 
     POSTairtable("apphvNDlBgA5T08CM","tbl7xtS00BVviO8kk",JSON.stringify(body),"responseNewRawMindel");
