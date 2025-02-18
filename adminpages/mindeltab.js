@@ -44,6 +44,18 @@ document.getElementById("mindelsearchfield").addEventListener("input", () => {
     makeTargetValueList(mindellistG); // Oppdater listen ved endring i søkefeltet
 });
 
+document.getElementById("addnewregistration").addEventListener("click", function() {
+    const wrapper = document.getElementById("newregistrationwrapper");
+
+    if (wrapper.style.display === "none" || wrapper.style.display === "") {
+        wrapper.style.display = "block"; // Viser elementet
+    } else {
+        wrapper.style.display = "none"; // Skjuler elementet
+    }
+});
+
+
+
 function makeTargetValueList(data) {
     console.log(data);
 
