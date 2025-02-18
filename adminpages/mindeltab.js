@@ -312,6 +312,8 @@ document.getElementById("savemindelbutton").addEventListener("click", function (
         comment: commentValue,
         amount: Number(amountValue)
     });
+    // Nullstill alle felter etter vellykket lagring
+    resetFields();
 });
 
 // Dummy-funksjon for lagring av data
@@ -319,3 +321,12 @@ function saveRegistration(data) {
     console.log("Data lagret:", data);
     alert("Registreringen ble lagret!");
 }
+
+function resetFields() {
+    document.getElementById("mindelnewdateinput").value = ""; // Nullstill dato
+    document.getElementById("mindelnewuserSearch").value = ""; // Nullstill bruker søk
+    document.getElementById("mindelselectedUserAirtable").value = ""; // Nullstill skjult felt
+    document.getElementById("mindelkomment").value = ""; // Nullstill kommentar
+    document.getElementById("mindelnewvalue").value = ""; // Nullstill beløp
+}
+
