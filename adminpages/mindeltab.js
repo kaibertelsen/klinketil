@@ -247,12 +247,14 @@ searchInput.addEventListener("input", function () {
         return;
     }
 
-    // Vis søkeresultatene
+    // Vis søkeresultatene som klikkbare lenker
     results.forEach(user => {
-        const userItem = document.createElement("div");
+        const userItem = document.createElement("a"); // Oppretter en lenke
         userItem.classList.add("search-item");
         userItem.textContent = user.name;
-        userItem.addEventListener("click", function () {
+        userItem.href = "#"; // Fjerner standardlenke-funksjon
+        userItem.addEventListener("click", function (e) {
+            e.preventDefault(); // Hindrer sidehopp
             searchInput.value = user.name; // Sett valgt navn i input-feltet
             resultContainer.innerHTML = ""; // Skjul søkeresultatene
         });
