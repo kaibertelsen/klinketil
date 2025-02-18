@@ -332,16 +332,15 @@ function saveRegistration(data) {
         komment: data.komment || "Ingen kommentar",
         value: data.value ? Number(data.value) : 0, // Konverter til tall
         airtable: data.airtable,
-        name: data.user,
+        name: data.name,
         project: proIdg
     };
 
     // Legg til i mindellistG
     mindellistG.push(formattedEntry);
 
-    // Bekreft lagring
-    console.log("Data lagret i mindellistG:", formattedEntry);
-    alert("Registreringen ble lagret!");
+    // Lagre på server
+   savrToServerRegistration(formattedEntry);
 
     // Nullstill inputfeltene
     resetFields();
@@ -349,6 +348,23 @@ function saveRegistration(data) {
     makeTargetValueList(mindellistG);
 }
 
+function savrToServerRegistration(data){
+
+    let body = {
+        dato:data.date,
+        kommentar:data.komment,
+        value:String(data.value),
+        project:[data.proIdg],
+        aklient:[klientid],
+        user:[data.airtable],
+    };
+
+    POSTairtable("apphvNDlBgA5T08CM","tbl7xtS00BVviO8kk",JSON.stringify(body),"responseNewRawMindel");
+   
+}
+function responseNewRawMindel(data){
+    console.log(data);
+}
 
 function resetFields() {
     document.getElementById("mindelnewdateinput").value = ""; // Nullstill dato
