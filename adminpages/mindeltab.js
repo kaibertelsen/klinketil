@@ -225,7 +225,10 @@ document.getElementById("xlstargetexport").addEventListener("click", () => {
 });
 
 const searchInput = document.getElementById("mindelnewuserSearch");
-const resultContainer = document.querySelector(".search-results");
+const resultContainer = document.createElement("div");
+resultContainer.classList.add("search-results");
+searchInput.parentNode.appendChild(resultContainer); // Legger dropdown under inputfeltet
+
 const hiddenAirtableInput = document.getElementById("mindelselectedUserAirtable"); // Skjult felt for Airtable ID
 
 searchInput.addEventListener("input", function () {
