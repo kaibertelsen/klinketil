@@ -278,3 +278,44 @@ document.addEventListener("click", function (e) {
     }
 });
 
+
+
+document.getElementById("savemindelbutton").addEventListener("click", function (event) {
+    event.preventDefault(); // Hindrer standard linkadferd
+
+    // Hent verdier fra inputfeltene
+    const dateValue = document.getElementById("mindelnewdateinput").value;
+    const userSearchValue = document.getElementById("mindelnewuserSearch").value;
+    const airtableValue = document.getElementById("mindelselectedUserAirtable").value;
+    const commentValue = document.getElementById("mindelkomment").value;
+    const amountValue = document.getElementById("mindelnewvalue").value;
+
+    // Liste over manglende felter
+    let missingFields = [];
+
+    if (!dateValue) missingFields.push("Dato");
+    if (!userSearchValue || !airtableValue) missingFields.push("Bruker");
+    if (!commentValue) missingFields.push("Kommentar");
+    if (!amountValue || isNaN(amountValue) || Number(amountValue) <= 0) missingFields.push("Beløp");
+
+    // Sjekk om det mangler data
+    if (missingFields.length > 0) {
+        alert("Følgende felt mangler:\n- " + missingFields.join("\n- "));
+        return;
+    }
+
+    // Hvis alle feltene er fylt ut, lagre data
+    saveRegistration({
+        date: dateValue,
+        user: userSearchValue,
+        airtableId: airtableValue,
+        comment: commentValue,
+        amount: Number(amountValue)
+    });
+});
+
+// Dummy-funksjon for lagring av data
+function saveRegistration(data) {
+    console.log("Data lagret:", data);
+    alert("Registreringen ble lagret!");
+}
