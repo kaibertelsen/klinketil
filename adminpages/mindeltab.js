@@ -126,8 +126,7 @@ function makeTargetValueList(data) {
             deletebutton.addEventListener("click", () => {
                 let confirmDelete = confirm("Vil du slette denne føringen?");
                 if (confirmDelete) {
-                    mindelElement.remove(); // Fjerner elementet fra DOM
-                    
+                   
                     // Slett fra Airtable
                     DELETEairtable("apphvNDlBgA5T08CM", "tbl7xtS00BVviO8kk", row.airtable, "responseDeleteMindelRow");
     
@@ -137,6 +136,8 @@ function makeTargetValueList(data) {
                         mindellistG.splice(indexToRemove, 1);
                         console.log("Element fjernet fra mindellistG:", row);
                     }
+                    //bygg listen på nytt
+                    makeTargetValueList(mindellistG);
                 }
             });
         }
