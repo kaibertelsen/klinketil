@@ -55,7 +55,6 @@ document.getElementById("addnewregistration").addEventListener("click", function
 });
 
 
-
 function makeTargetValueList(data) {
     console.log(data);
 
