@@ -126,9 +126,17 @@ function makeTargetValueList(data) {
             deletebutton.addEventListener("click", () => {
                 let confirmDelete = confirm("Vil du slette denne føringen?");
                 if (confirmDelete) {
-                   // mindelElement.remove(); // Fjerner elementet fra DOM
-                   DELETEairtable("baseId","tableId",row.airtable,"responseDeleteMindelRow")
-                    console.log("Element slettet:", row); // Kan erstattes med en faktisk slettefunksjon
+                    mindelElement.remove(); // Fjerner elementet fra DOM
+                    
+                    // Slett fra Airtable
+                    DELETEairtable("apphvNDlBgA5T08CM", "tbl7xtS00BVviO8kk", row.airtable, "responseDeleteMindelRow");
+    
+                    // Finn og fjern objektet fra mindellistG basert på airtable-nøkkel
+                    const indexToRemove = mindellistG.findIndex(item => item.airtable === row.airtable);
+                    if (indexToRemove !== -1) {
+                        mindellistG.splice(indexToRemove, 1);
+                        console.log("Element fjernet fra mindellistG:", row);
+                    }
                 }
             });
         }
@@ -136,6 +144,7 @@ function makeTargetValueList(data) {
         // Legg elementet til i listen
         list.appendChild(mindelElement);
     });
+    
     
 
     // Oppdater totalverdi
