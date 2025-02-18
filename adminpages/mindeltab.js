@@ -312,15 +312,41 @@ document.getElementById("savemindelbutton").addEventListener("click", function (
         comment: commentValue,
         amount: Number(amountValue)
     });
-    // Nullstill alle felter etter vellykket lagring
-    resetFields();
+
+
 });
 
-// Dummy-funksjon for lagring av data
+// Funksjon for å lagre registrering
 function saveRegistration(data) {
-    console.log("Data lagret:", data);
+    if (!data || typeof data !== "object") {
+        console.error("Ugyldig dataformat!");
+        alert("Noe gikk galt, prøv igjen.");
+        return;
+    }
+
+    // Sikre at data er riktig formatert
+    const formattedEntry = {
+        date: data.date || new Date().toISOString().split("T")[0], // Standard til dagens dato (YYYY-MM-DD)
+        komment: data.komment || "Ingen kommentar",
+        value: data.value ? Number(data.value) : 0, // Konverter til tall
+        airtable: data.airtable || "",
+        name: data.user || "Ukjent navn",
+        project: data.project || "Ukjent prosjekt"
+    };
+
+    // Legg til i mindellistG
+    mindellistG.push(formattedEntry);
+
+    // Bekreft lagring
+    console.log("Data lagret i mindellistG:", formattedEntry);
     alert("Registreringen ble lagret!");
+
+    // Nullstill inputfeltene
+    resetFields();
+
+    makeTargetValueList(mindellistG);
 }
+
 
 function resetFields() {
     document.getElementById("mindelnewdateinput").value = ""; // Nullstill dato
