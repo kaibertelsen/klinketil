@@ -354,7 +354,7 @@ function savrToServerRegistration(data){
         dato:data.date,
         kommentar:data.komment,
         value:String(data.value),
-        project:[data.proIdg],
+        project:[data.project],
         aklient:[klientid],
         user:[data.airtable],
     };
