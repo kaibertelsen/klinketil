@@ -365,6 +365,10 @@ function saveToServerRegistration(data){
     };
 
     POSTairtable("apphvNDlBgA5T08CM","tbl7xtS00BVviO8kk",JSON.stringify(body),"responseNewRawMindel");
+
+    //hvis animasjon
+    document.getElementById("postrowanimation").style.display = "block";
+    
    
 }
 function responseNewRawMindel(data){
@@ -374,6 +378,7 @@ function responseNewRawMindel(data){
     mindellistG.push(JSON.parse(data.fields.json));
     makeTargetValueList(mindellistG);
     }    
+    document.getElementById("postrowanimation").style.display = "none";
 }
 
 function resetFields() {
