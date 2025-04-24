@@ -212,13 +212,17 @@ function rowClick(element,item){
         editrow.appendChild(checkbox);
     }else if(childNodes[i].dataset.typeEditelement == "dropdown"){
 
-        const text = document.createElement("text");   
-        text.textContent = childNodes[i].textContent;
-        text.classList.add("cellitem");
-        text.classList.add("edit");
-        text.style.justifySelf = childNodes[i].dataset.justify;
-        editrow.appendChild(text);
+       
         console.log("dropdown",item,totalprosject);
+
+        //lag en selector og last inn alle prosjekt
+        let selector = makeSelectorElement(element,totalprosject,item.projectid);
+        selector.classList.add("cellitem");
+        selector.classList.add("edit");
+        selector.style.justifySelf = childNodes[i].dataset.justify;
+        editrow.appendChild(selector);
+
+
 
     }else{
         const text = document.createElement("text");   
@@ -275,4 +279,35 @@ function rowClick(element,item){
     }); 
     buttonwrapper.appendChild(deletebutton);
 
+}
+
+
+
+function makeSelectorElement(element,data,selectedvalue){
+    //lage en ny div
+    const selector = document.createElement("select");
+    selector.classList.add("selector");
+    selector.classList.add("edit");
+    selector.style.justifySelf = element.dataset.justify;
+
+    data.forEach((item) => {
+        const option = document.createElement("option");
+        option.value = item.airtable;
+        option.textContent = item.name;
+        selector.appendChild(option);
+    });
+
+    //sett valgt verdi
+    if(selectedvalue){
+        selector.value = selectedvalue;
+    }
+    //legge til event
+    selector.addEventListener('change', function() {
+        // Handle the change event here
+        console.log("Selected value:", selector.value);
+    }
+    );
+
+   
+    return selector;
 }
