@@ -286,10 +286,7 @@ function rowClick(element,item){
 function makeSelectorElement(element,data,selectedvalue){
     //lage en ny div
     const selector = document.createElement("select");
-    selector.classList.add("selector");
-    selector.classList.add("edit");
-    selector.style.justifySelf = element.dataset.justify;
-
+   
     //sorter data etter data.name
     data = data.sort((a, b) => {
         if (a.name < b.name) return -1;

@@ -867,3 +867,66 @@ function doafterserverandUpdate(id){
    GETairtable(baseid,"tblkNYRENn5QFG0CD","recfJZ0PCPOrWcBLq","responddaschboard");
 }
 
+function mergeinputtoRow(editrow,row){
+  
+    //sette inn verdier til orginal row
+     var childEdit = editrow.childNodes;
+     var childrow = row.childNodes;
+     let body = {};
+     for(var i = 0;i<childrow.length;i++){
+         
+       if(childrow[i].dataset.typeEditelement == "input"){
+           let cellvalue = valueTypeConverter(childrow[i].dataset.typeColums,childEdit[i].value);
+           childrow[i].textContent = cellvalue.element;
+           
+           if(childrow[i].dataset.save == "1"){
+          body[childrow[i].dataset.dbproperty] = cellvalue.save;
+           }
+   
+       }else if(childrow[i].dataset.typeEditelement == "checkbox"){
+          if(childEdit[i].checked){
+           childrow[i].classList.remove("false");
+           childrow[i].classList.add("true");
+           childrow[i].dataset.status = true;
+          }else{
+           childrow[i].classList.remove("true");
+           childrow[i].classList.add("false");
+           childrow[i].dataset.status = false;
+          }
+          
+           if(childrow[i].dataset.save == "1"){
+          //sette vedi i body
+          body[childrow[i].dataset.dbproperty] = childEdit[i].checked;
+           }
+           
+       }else if (childrow[i].dataset.typeEditelement == "button"){
+          // ikke gjør noe
+       }else if(childrow[i].dataset.typeEditelement == "date"){
+            //dato konverter til iso text
+            childrow[i].dataset.date = getThisdayInISOFormat(childEdit[i].value)
+            childrow[i].textContent = formatISODateToMiniFormat(getThisdayInISOFormat(childEdit[i].value));
+            if(childrow[i].dataset.save == "1"){
+            body[childrow[i].dataset.dbproperty] = getThisdayInISOFormat(childEdit[i].value);
+            }
+       }else if(childrow[i].dataset.typeEditelement == "dropdown"){
+            let selector = childEdit[i];
+
+            //finne value og tekst 
+            let selectedOption = selector.options[selector.selectedIndex];
+            let value = selectedOption.value;
+            let text = selectedOption.text;
+            childrow[i].textContent = text;
+            childrow[i].dataset.value = value;
+            
+        } else{
+            let cellvalue = valueTypeConverter(childrow[i].dataset.typeColums,childEdit[i].textContent);
+            childrow[i].textContent = cellvalue.element;
+            if(childrow[i].dataset.save == "1"){
+            body[childrow[i].dataset.dbproperty] = cellvalue.save;
+             }
+       }
+     }
+     
+     return body;
+}
+
