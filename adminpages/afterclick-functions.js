@@ -8,14 +8,14 @@ function canclerowEdit(editrow){
     //fjerne edit row
     editrow.remove();
    
-  }
+}
   
-  function canclerowAdd(row){
+function canclerowAdd(row){
       document.getElementById("row-new").style.display = "none";
       document.getElementById("add-new").style.display = "inline-block";
-  }
+}
   
-   function rowSort(sortname,elementid){
+function rowSort(sortname,elementid){
     
     const element = document.getElementById(elementid);
     const classesToCheck = ['up', 'down'];
@@ -58,9 +58,9 @@ function canclerowEdit(editrow){
       }
   
   
-  }
+}
 
-  function rowdirectClick(rowid){
+function rowdirectClick(rowid,item){
       //
       const rowelement = document.getElementById(rowid);
       let dataitemid = rowelement.dataset.id;
@@ -69,17 +69,17 @@ function canclerowEdit(editrow){
           const project = findObjectProperty("airtable",dataitemid,totalprosject);
           creatNewWrapper(rowelement.parentElement,rowelement,project);
       }else{
-      rowClick(rowelement);
+      rowClick(rowelement,item);
       }
-  }
+}
   
-  function markallcheckboxinlist(checkbox,classname,checked,property){
+function markallcheckboxinlist(checkbox,classname,checked,property){
       const list = checkbox.parentElement.parentElement;
       markcheckboxinList(list,classname,checked);
       sumcheckboxElements(checkbox,property);
-  }
+}
 
-  function markcheckboxinList(list,classname,checked){
+function markcheckboxinList(list,classname,checked){
       const listcheckboxes = list.getElementsByClassName(classname);
       for (var i = 0;i<listcheckboxes.length;i++){
           if(isListElementVisible(listcheckboxes[i].parentElement)){
@@ -88,15 +88,15 @@ function canclerowEdit(editrow){
               }
           }
       }
-  }
+}
   
-  function onecheckboxIsclicked(checkbox,property){
+function onecheckboxIsclicked(checkbox,property){
   
       sumcheckboxElements(checkbox,property);
   
-  }
+}
 
-  function runSelectingAction(list,id,property){
+function runSelectingAction(list,id,property){
   const actionbuttonObject = property.actionbuttons[id];
   //lage array med airtable og approvalstatus
   var records = makeSaveApprovalList(list,actionbuttonObject,property);
@@ -113,9 +113,9 @@ function canclerowEdit(editrow){
   
   //sende til server
   updateRecordsInBatches("apphvNDlBgA5T08CM",property.tableid,records);
-  }
+}
   
-  function makeSaveApprovalList(list,actionbuttonObject,property){
+function makeSaveApprovalList(list,actionbuttonObject,property){
       var savelist = [];
       const listcheckboxes = list.getElementsByClassName("rowcheck");
      
@@ -136,9 +136,9 @@ function canclerowEdit(editrow){
       }
   
       return savelist;
-  }
+}
   
-  function multiUpdatinternListApproval(records,property){
+function multiUpdatinternListApproval(records,property){
       for (var i = 0;i<records.length;i++){
           let id = records[i].id;
           var object = findObjectProperty("airtable",id,listarray);
@@ -155,9 +155,9 @@ function canclerowEdit(editrow){
               updateObjectProperty("airtable",id,object,totalprosject);    
           }
       }
-  }
+}
 
-function rowClick(element){
+function rowClick(element,item){
 
     //kopiere row og legge til ny id
     const editrow = element.cloneNode(true);
@@ -210,6 +210,16 @@ function rowClick(element){
         checkbox.classList.add("edit");
         checkbox.style.justifySelf = childNodes[i].dataset.justify;
         editrow.appendChild(checkbox);
+    }else if(childNodes[i].dataset.typeEditelement == "dropdown"){
+
+        const text = document.createElement("text");   
+        text.textContent = childNodes[i].textContent;
+        text.classList.add("cellitem");
+        text.classList.add("edit");
+        text.style.justifySelf = childNodes[i].dataset.justify;
+        editrow.appendChild(text);
+        console.log("dropdown",item);
+
     }else{
         const text = document.createElement("text");   
         text.textContent = childNodes[i].textContent;

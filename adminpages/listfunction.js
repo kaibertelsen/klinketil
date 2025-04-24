@@ -16,7 +16,7 @@ function startprojectlist(data,listid,load,sortname,descending){
     let labledColums = ["Dato","Navn","Prosjekt","Kommentar","S", "T"];
     let justifyColums = ["start","start","start","start","start","end","end"];
     let typeColums = ["text","text","text","text","status","t"];
-    let typeEditelement = ["date","text","text","text","text","input"];
+    let typeEditelement = ["date","text","dropdown","text","text","input"];
     let cellClass = ["dateitem","cellitembold","cellitem","cellitem","cellstatus","cellitem"];
     //let headerColums = Object.keys(data[0]);
     let spaceColums = "50px "+"0.6fr "+"0.6fr "+"1fr "+"30px "+"30px";
@@ -366,7 +366,7 @@ function generateRowObject(data,list,property,totalsumObject){
     
             // Definer handleClick-funksjonen for å ha referanse
             function handleClick() {
-                rowdirectClick(rowidclick);
+                rowdirectClick(rowidclick,data);
             }
     
             // Legg til event listener for klikk
