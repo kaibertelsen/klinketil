@@ -290,6 +290,13 @@ function makeSelectorElement(element,data,selectedvalue){
     selector.classList.add("edit");
     selector.style.justifySelf = element.dataset.justify;
 
+    //sorter data etter data.name
+    data = data.sort((a, b) => {
+        if (a.name < b.name) return -1;
+        if (a.name > b.name) return 1;
+        return 0;
+    });
+
     data.forEach((item) => {
         const option = document.createElement("option");
         option.value = item.airtable;
