@@ -921,6 +921,7 @@ function mergeinputtoRow(editrow,row){
 
             if(childrow[i].dataset.save == "1"){
                 body.project = [value];
+                body.prosjektname = text;
             }
             
         } else{
