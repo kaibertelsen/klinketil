@@ -929,6 +929,7 @@ function mergeinputtoRow(editrow,row){
             let object = findObjectProperty("airtable",objectid,listarray);
             //legge til i objectet
             object.project = [value];
+            object.projectid = value;
             object.prosjektname = text;
             object.projectname = text;
             
