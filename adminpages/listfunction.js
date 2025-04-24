@@ -923,6 +923,11 @@ function mergeinputtoRow(editrow,row){
                 body.project = [value];
                 body.prosjektname = text;
             }
+
+            //opdatere i lokal array listarray
+            let object = {};
+            console.log(listarray);
+            
             
         } else{
             let cellvalue = valueTypeConverter(childrow[i].dataset.typeColums,childEdit[i].textContent);
