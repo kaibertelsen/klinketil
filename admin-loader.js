@@ -13,7 +13,9 @@ const cdnScripts = [
     "https://kaibertelsen.github.io/klinketil/adminpages/afterclick-functions.js",
     "https://kaibertelsen.github.io/klinketil/adminpages/createlements.js",
     "https://kaibertelsen.github.io/klinketil/adminpages/mindeltab.js",
-    "https://kaibertelsen.github.io/klinketil/adminpages/export.js"
+    "https://kaibertelsen.github.io/klinketil/adminpages/export.js",
+    "https://kaibertelsen.github.io/klinketil/adminpages/listfunction.js"
+
 ];
 
 // Laste inn alle skriptene sekvensielt

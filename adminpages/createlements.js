@@ -289,6 +289,7 @@ function makegroupOptins(data){
         }
     return array;
 }
+
 function filterFunctionuser(dropdownid,inputid) {
     var input, filter, div, a, i;
     input = document.getElementById(inputid);
@@ -319,6 +320,7 @@ function filterFunctionuser(dropdownid,inputid) {
     div.style.bottom = '-'+div.offsetHeight+'px';
 
 }
+
 function makeresponseOptins(data){
     var array = [];
         for(var i=0;i<data.length;i++){
@@ -326,6 +328,7 @@ function makeresponseOptins(data){
         }
     return array;
 }
+
 function loadDropdownresponsible(data,dropdownMenu,userwrapper,inputfield) {
     dropdownMenu.innerHTML = '';
     data.forEach(item => {
@@ -341,6 +344,7 @@ function loadDropdownresponsible(data,dropdownMenu,userwrapper,inputfield) {
         dropdownMenu.appendChild(a);
     });
 }
+
 function projectUserSelected(element,dropdownMenu,userwrapper,inputfield){
 dropdownMenu.style.display = "none";
 inputfield.value = "";
@@ -365,6 +369,7 @@ removebutton.onclick = function() {
 };
 textwrapper.appendChild(removebutton);
 }
+
 function projectUserloading(userwrapper,data){
     //legge til bruker
     const textwrapper = document.createElement('div');
@@ -386,9 +391,11 @@ function projectUserloading(userwrapper,data){
     };
     textwrapper.appendChild(removebutton);
 }
+
 function removeprojectUser(textwrapper){
     textwrapper.remove();
 }
+
 function deleteProject(newWrapper){
     let deleteid = newWrapper.dataset.airtable;
     const userChoice = confirm("Er du sikker på at du vil slette?");
@@ -407,10 +414,12 @@ function deleteProject(newWrapper){
 
 
 }
+
 function responsdeleteproject(data,id){
 //
 console.log(data);
 }
+
 function cancleProject(newWrapper){
     newWrapper.remove();
      // show addknappen
@@ -423,6 +432,7 @@ function cancleProject(newWrapper){
 
 
 }
+
 function updateProject(newWrapper){
 
     const elementsWithSave = newWrapper.querySelectorAll('.saveelement');
@@ -515,6 +525,7 @@ function updateProject(newWrapper){
     }
 
 }
+
 function projectToRow(newWrapper,saveobject){
     if(document.getElementById(newWrapper.dataset.hideid)){
         //det er et eksisterende element
@@ -545,6 +556,7 @@ function projectToRow(newWrapper,saveobject){
     newWrapper.remove();
     
 }
+
 function prosjectToServer(saveobject){
     let id = saveobject.airtable
     delete saveobject.airtable;
@@ -562,6 +574,7 @@ function prosjectToServer(saveobject){
     POSTairtable("apphvNDlBgA5T08CM","tblBFI0kCc5dfSac2",JSON.stringify(saveobject),"newProjectretur");
     }
 }
+
 function saveProjectretur(data,id){
     if(findObjectProperty("airtable",data.id,totalprosject)){
     //oppdater listen internt
@@ -571,6 +584,7 @@ function saveProjectretur(data,id){
     }
 console.log(data);
 }
+
 function newProjectretur(data,id){
     
     //det er et nytt prosjekt
