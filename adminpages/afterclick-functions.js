@@ -218,7 +218,7 @@ function rowClick(element,item){
         text.classList.add("edit");
         text.style.justifySelf = childNodes[i].dataset.justify;
         editrow.appendChild(text);
-        console.log("dropdown",item);
+        console.log("dropdown",item,totalprosject);
 
     }else{
         const text = document.createElement("text");   
