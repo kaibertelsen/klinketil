@@ -12,7 +12,7 @@ function startprojectlist(data,listid,load,sortname,descending){
     
     let tabelid = "tbl7xtS00BVviO8kk";
     let viewColums = ["dato","name","projectname","kommentar","statusintern","timeverdi"];
-    let saveColums = [1,0,0,0,0,1];
+    let saveColums = [1,0,1,0,0,1];
     let labledColums = ["Dato","Navn","Prosjekt","Kommentar","S", "T"];
     let justifyColums = ["start","start","start","start","start","end","end"];
     let typeColums = ["text","text","text","text","status","t"];
@@ -756,6 +756,7 @@ function saverowEdit(editrow){
      if(element.dataset.tableid == "tbl7xtS00BVviO8kk"){
       //her skal timeverdi omgjøres til timer og minutter for å legge dette inn i riktig felt
       body = spesialTimerBody(body);
+   
      };
     
      //lagre på server
@@ -917,6 +918,10 @@ function mergeinputtoRow(editrow,row){
             let text = selectedOption.text;
             childrow[i].textContent = text;
             childrow[i].dataset.value = value;
+
+            if(childrow[i].dataset.save == "1"){
+                body.project = [value];
+            }
             
         } else{
             let cellvalue = valueTypeConverter(childrow[i].dataset.typeColums,childEdit[i].textContent);
