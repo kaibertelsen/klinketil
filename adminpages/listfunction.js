@@ -924,9 +924,13 @@ function mergeinputtoRow(editrow,row){
                 body.prosjektname = text;
             }
 
-            //opdatere i lokal array listarray
-            let object = {};
-            console.log(listarray);
+            //finne objectet i listarray med nøkelen airtable
+            let objectid = row.dataset.id;
+            let object = findObjectProperty("airtable",objectid,listarray);
+            //legge til i objectet
+            object.project = [value];
+            object.prosjektname = text;
+            object.projectname = text;
             
             
         } else{
