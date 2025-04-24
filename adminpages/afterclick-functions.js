@@ -156,3 +156,113 @@ function canclerowEdit(editrow){
           }
       }
   }
+
+function rowClick(element){
+
+    //kopiere row og legge til ny id
+    const editrow = element.cloneNode(true);
+    let id = element.dataset.id
+    editrow.id = "edit"+id;
+    editrow.dataset.rowelementid = element.id;
+    editrow.classList.add("selected");
+    editrow.style.margin = '5px 0';
+    // Fjern alle child-elementene
+    while (editrow.firstChild) {
+    editrow.removeChild(editrow.firstChild);
+    }
+    element.parentNode.insertBefore(editrow, element);
+    element.style.display = "none";
+    
+
+    var childNodes = element.childNodes;
+    //list opp child elements
+    for(var i = 0;i<childNodes.length;i++){
+   
+    if(childNodes[i].dataset.typeEditelement == "input"){
+        const input = document.createElement("input");
+        input.classList.add("inputcell");
+        input.classList.add("edit");
+        input.value = childNodes[i].textContent;
+        input.placeholder = childNodes[i].dataset.labledColums;
+        input.style.textAlign = childNodes[i].dataset.justify;
+        editrow.appendChild(input);
+    }else if(childNodes[i].dataset.typeEditelement == "date"){
+       
+        const input = document.createElement("input");
+        input.setAttribute("type", "date");
+        input.classList.add("inputcell");
+        input.classList.add("edit");
+        input.value = childNodes[i].dataset.date;
+        input.placeholder = getTodayInISOFormat();
+        input.style.textAlign = childNodes[i].dataset.justify;
+        editrow.appendChild(input);
+
+    }else if(childNodes[i].dataset.typeEditelement == "checkbox"){
+        const checkbox = document.createElement("input");   
+        // Sett typen til checkbox
+        checkbox.type = 'checkbox';
+            if(childNodes[i].dataset.status){
+            checkbox.checked = true;
+            }else{
+            checkbox.checked = false;
+            }
+        checkbox.classList.add("checkboxcell");
+        checkbox.classList.add("edit");
+        checkbox.style.justifySelf = childNodes[i].dataset.justify;
+        editrow.appendChild(checkbox);
+    }else{
+        const text = document.createElement("text");   
+        text.textContent = childNodes[i].textContent;
+        text.classList.add("cellitem");
+        text.classList.add("edit");
+        text.style.justifySelf = childNodes[i].dataset.justify;
+        editrow.appendChild(text);
+    }
+
+    }
+    //legge til buttonwrapper
+    var buttonwrapper = document.createElement("a");
+    buttonwrapper.classList.add("editbuttonholder");
+    const computedStyle = window.getComputedStyle(editrow);
+    const columnCount = computedStyle.gridTemplateColumns.split(' ').length;
+    // Sett elementets posisjon
+    buttonwrapper.style.gridColumn = `1 / span ${columnCount}`; // Fra første til siste kolonne
+    buttonwrapper.style.gridRow = 2; // Andre rad
+    // Legg til padding på 5px i alle retninger
+    buttonwrapper.style.padding = '5px';    
+    // Bruk flexbox for å høyrestille innholdet i buttonwrapper
+    buttonwrapper.style.display = 'flex';
+    buttonwrapper.style.justifyContent = 'flex-end';
+    // Legg til en grå toppkantlinje på 0,5px
+    buttonwrapper.style.borderTop = '0.5px solid gray';
+    editrow.appendChild(buttonwrapper);
+    
+    //legge til editbuttens
+    var savebutton = document.createElement("button");
+    savebutton.classList.add("editinfobutton");
+    savebutton.classList.add("save");
+    savebutton.textContent = "Lagre";
+    savebutton.addEventListener('click', function() {
+    saverowEdit(editrow);
+    }); 
+    buttonwrapper.appendChild(savebutton);
+
+
+    var canclebutton = document.createElement("button");
+    canclebutton.classList.add("editinfobutton");
+    canclebutton.classList.add("cancle");
+    canclebutton.addEventListener('click', function() {
+    canclerowEdit(editrow);
+    }); 
+    buttonwrapper.appendChild(canclebutton);
+    
+    var deletebutton = document.createElement("button");
+    deletebutton.classList.add("editinfobutton");
+    deletebutton.classList.add("delete");
+    deletebutton.classList.add("new");
+    deletebutton.addEventListener('click', function() {
+    deleterowEdit(editrow);
+    }); 
+    buttonwrapper.appendChild(deletebutton);
+
+}
