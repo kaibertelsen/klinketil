@@ -3,7 +3,7 @@ if(userairtable == "recnhdhuJsiUYqFkK"){
     button.style.display = "inline-block";
     button.addEventListener("click", function() {
         //getTestResponse()
-        getRecordWithShareKey();
+       // getRecordWithShareKey();
      });
 }
 
@@ -83,10 +83,6 @@ function getTestResponse(){
 
 
 async function getRecordWithShareKey(shareId, shareKey) {
-
-shareId = "recFIOXuyxbyKDjA0"; // Standard shareId hvis ikke gitt
-shareKey = "05569c20aad85f6bb965473b7b11683ebbc5c7e2e5c0ac33fc0f3b1ed971a04ebeb28160b2bc311d04f18b986b185e1ca6a13063fe94d4e61ded9f4e146a986eda969100c180e190cfd8033820d065a2ae23d4c2d968099129ada4da1b0a67cdb7869d2fc4b0583722df070b5934a19e4fabaeec8cf63f677565318ac1c91977f5078ff47a025ba8ce635050fcc76aec906b51aa8cd7109a204e0d1416b79820be32952a432a1ee1e9f3106c0b694b4f43e2cc6e63d2f6e3fd4cfbd470c9ed98b93adf924366ee32e5dd9b6fa57c796c224a5a66625ea328341e2b479e88cd1b47741c10d13bc933dfa744a71e396ce47cbabcd57677e8082829228841ed9a4e"; // Standard shareKey hvis ikke gitt
-
 
     try {
       const response = await fetch(`https://expoapi-zeta.vercel.app/api/row?shareId=${shareId}&shareKey=${shareKey}`);
