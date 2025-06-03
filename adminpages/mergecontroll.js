@@ -2,8 +2,8 @@ if(userairtable == "recnhdhuJsiUYqFkK"){
     const button = document.getElementById("generateMergeButton");
     button.style.display = "inline-block";
     button.addEventListener("click", function() {
-
-        generatePublickMergeLink();
+        getTestResponse()
+        //generatePublickMergeLink();
      });
 }
 
@@ -100,3 +100,15 @@ async function getRecordWithShareKey(shareId,shareKey){
         }
   }
 
+function responseKlinketil(data) {
+ 
+   let dataArray = data.fields.jsontime;
+   let dataToUse = [];
+    for (let i = 0; i < dataArray.length; i++) {
+       //parser data
+         let item = JSON.parse(dataArray[i]);
+         dataToUse.push(item);
+    }
+    console.log(dataToUse);
+
+}
