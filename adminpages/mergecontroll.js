@@ -10,9 +10,9 @@ if(userairtable == "recnhdhuJsiUYqFkK"){
 function generatePublickMergeLink() {
     
     // Generer en sharelink
-    let baseId = "app1WzN1IxEnVu3m0";
-    let tableId = "tblc1AGhwc6MMu4Aw";
-    let rowId = data.id;
+    let baseId = "apphvNDlBgA5T08CM";
+    let tableId = "tblD6CoZLkVn3aw15";
+    let rowId = "recUWbJ9xwFTC0Nvs";
     let text = "Tilkobling til Klinketil";
 
     // Beregn utløpsdatoen 6 måneder frem i tid
