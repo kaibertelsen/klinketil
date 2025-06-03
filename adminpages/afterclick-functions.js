@@ -281,8 +281,6 @@ function rowClick(element,item){
 
 }
 
-
-
 function makeSelectorElement(element,data,selectedvalue){
     //lage en ny div
     const selector = document.createElement("select");
