@@ -2,8 +2,8 @@ if(userairtable == "recnhdhuJsiUYqFkK"){
     const button = document.getElementById("generateMergeButton");
     button.style.display = "inline-block";
     button.addEventListener("click", function() {
-        getTestResponse()
-        //generatePublickMergeLink();
+        //getTestResponse()
+        generatePublickMergeLink();
      });
 }
 
@@ -70,17 +70,13 @@ function responPostpublicLink(data){
     console.log(data);
     //send denne linken på mail via zapier
 
-    //etter 2 sekunder kjør getTestResponse()
-    setTimeout(() => {
-        getTestResponse();
-    }, 2000);
 }
 
 // Test response
 function getTestResponse(){
 
-    let shareId = "recK0xxQwi20o4vOk"; // Eksempel shareId
-    let shareKey = "78ddb096388a1fb6bf068e9e8e82dc9434692ccf4d15bb6c65c8b64af113b0ab200a0940c8e53f8eb3184bcaec69f92ba16cc894a9c829bf39df5cba214a96401897f2ffc4a9f595d5aa5776f486159b8cfd93178a4eb0bdacf7223624652f294fc305dd65afd963afa313764edb9444156a28e9ebb409be7dd8e4f3f32d76da25cdf09b4af37c3c64e77d61dcf03332da4e9db6e555b23595f8e232d14b091a8aa98ec929ddd6db3c33c2b27e37d91f7ba7288776b17d08dc2d75eeba73088e01d67abcd83895bd808c29e5d08404e7fa5e2fcd6e14ac8f23a1986bf7cbb7d9b05718e9649c1308d8662d99328a8fc82eb49a2f594d381842bd320ea47a4e03"; // Eksempel shareKey
+    let shareId = ""; // Eksempel shareId
+    let shareKey = ""; // Eksempel shareKey
     getRecordWithShareKey(shareId, shareKey);
 
 }
