@@ -96,7 +96,7 @@ async function getRecordWithShareKey(shareId,shareKey){
            }
         }else{
           let data = await response.json();
-          console.log(data);
+          responseKlinketil(data)
         }
   }
 
