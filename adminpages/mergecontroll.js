@@ -102,9 +102,9 @@ async function getRecordWithShareKey(shareId, shareKey) {
     } catch (error) {
       console.error("Nettverksfeil eller ugyldig svar:", error);
     }
-  }
+}
   
-  function handleResponse(jsonTimeArray) {
+function handleResponse(jsonTimeArray) {
     try {
       const parsedData = jsonTimeArray.map(item => JSON.parse(item));
       console.log(parsedData);
@@ -112,5 +112,5 @@ async function getRecordWithShareKey(shareId, shareKey) {
     } catch (error) {
       console.error("Feil ved parsing av jsonTimeArray:", error);
     }
-  }
+}
   
