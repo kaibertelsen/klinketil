@@ -140,7 +140,7 @@ function exportField(data){
     const keysToRemove = ["statusintern", "projectid","airtable"];
     
     // Definer ønsket rekkefølge for de nye nøklene
-    const newOrder = findKeysforExportonKlient();
+    const newOrder = findKeysforExportonKlient(data);
     
     // Omdøpe alle nøklene, fjerne spesifiserte nøkler, og endre rekkefølgen
     const reorderedData = data.map(item => {
@@ -165,7 +165,7 @@ function exportField(data){
     return reorderedData;
 }
 
-function findKeysforExportonKlient(){
+function findKeysforExportonKlient(data){
 
      let kjontrollnr = klientid.slice(-4);
 
@@ -173,13 +173,13 @@ function findKeysforExportonKlient(){
     //os
 
     //dob skal inn i eksport
-    mergeDobInTimeList(totaltimerows,totalusers);
+    mergeDobInTimeList(data,totalusers);
 
     return ["Nr","Dato","Navn","Kommentar", "Gruppe", "Prosjekt", "Timer","Antall enheter","Alder","F.dato","Kontonr","E-post", "Godkjent", "Fakturert", "Person ID"];
     }else if(kjontrollnr == "b7fc"){
     //BPS
     //dob skal inn i eksport
-    mergeDobInTimeList(totaltimerows,totalusers);
+    mergeDobInTimeList(data,totalusers);
 
     return ["Nr","Dato","Navn","Kommentar","Prosjekt", "Timer","Antall enheter","Alder","F.dato", "Godkjent", "Fakturert", "E-post", "Person ID"];
     }else if(kjontrollnr == "cfbb"){
