@@ -167,7 +167,6 @@ function exportField(data){
 
 function findKeysforExportonKlient(){
 
-    
      let kjontrollnr = klientid.slice(-4);
 
     if(kjontrollnr == "69ea"){
@@ -179,7 +178,10 @@ function findKeysforExportonKlient(){
     return ["Nr","Dato","Navn","Kommentar", "Gruppe", "Prosjekt", "Timer","Antall enheter","Alder","F.dato","Kontonr","E-post", "Godkjent", "Fakturert", "Person ID"];
     }else if(kjontrollnr == "b7fc"){
     //BPS
-    return ["Nr","Dato","Navn","Kommentar","Prosjekt", "Timer","Antall enheter","Alder", "Godkjent", "Fakturert", "E-post", "Person ID"];
+    //dob skal inn i eksport
+    mergeDobInTimeList(totaltimerows,totalusers);
+
+    return ["Nr","Dato","Navn","Kommentar","Prosjekt", "Timer","Antall enheter","Alder","F.dato", "Godkjent", "Fakturert", "E-post", "Person ID"];
     }else if(kjontrollnr == "cfbb"){
     //Måløy
     return ["Nr","Dato","Navn","Kommentar","Prosjekt", "Timer","Beløp","Alder", "Godkjent", "Fakturert", "E-post", "Person ID"];
