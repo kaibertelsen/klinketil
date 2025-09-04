@@ -126,6 +126,7 @@ function exportField(data){
         "approval": "Godkjent",
         "statusintern": "internalStatus",
         "userage":"Alder",
+        "dob":"F.dato",
         "userexportid":"Person ID",
         "userkontonr":"Kontonr",
         "timenr":"Nr",
@@ -171,6 +172,10 @@ function findKeysforExportonKlient(){
 
     if(kjontrollnr == "69ea"){
     //os
+
+    //dob skal inn i eksport
+    mergeDobInTimeList(totaltimerows,totalusers);
+
     return ["Nr","Dato","Navn","Kommentar", "Gruppe", "Prosjekt", "Timer","Antall enheter","Alder","F.dato","Kontonr","E-post", "Godkjent", "Fakturert", "Person ID"];
     }else if(kjontrollnr == "b7fc"){
     //BPS
@@ -181,6 +186,16 @@ function findKeysforExportonKlient(){
     }else{
     //rest
     return ["Nr","Dato","Navn","Kommentar","Prosjekt", "Timer","Alder", "Godkjent", "Fakturert", "Person ID"];    
+    }
+}
+function mergeDobInTimeList(timearray,userarray){
+    for(var i = 0;i<timearray.length;i++){
+        let user = userarray.find(u => u.airtable === timearray[i].userairtable);
+        if(user){
+            timearray[i].dob = user.dob || "";
+        }else{
+            timearray[i].dob = "";
+        }
     }
 }
 
