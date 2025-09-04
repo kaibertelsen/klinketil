@@ -171,7 +171,7 @@ function findKeysforExportonKlient(){
 
     if(kjontrollnr == "69ea"){
     //os
-    return ["Nr","Dato","Navn","Kommentar", "Gruppe", "Prosjekt", "Timer","Antall enheter","Alder","Kontonr","E-post", "Godkjent", "Fakturert", "Person ID"];
+    return ["Nr","Dato","Navn","Kommentar", "Gruppe", "Prosjekt", "Timer","Antall enheter","Alder","F.dato","Kontonr","E-post", "Godkjent", "Fakturert", "Person ID"];
     }else if(kjontrollnr == "b7fc"){
     //BPS
     return ["Nr","Dato","Navn","Kommentar","Prosjekt", "Timer","Antall enheter","Alder", "Godkjent", "Fakturert", "E-post", "Person ID"];
