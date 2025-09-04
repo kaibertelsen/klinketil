@@ -194,7 +194,13 @@ function mergeDobInTimeList(timearray,userarray){
     for(var i = 0;i<timearray.length;i++){
         let user = userarray.find(u => u.airtable === timearray[i].userairtable);
         if(user){
-            timearray[i].dob = user.dob || "";
+
+            //gjøre om dato 1981-02-16T00:00:00.000Z til type 01.08 2024
+            let dateObj = new Date(user.dob);
+            let day = String(dateObj.getDate()).padStart(2, '0');
+            let month = String(dateObj.getMonth() + 1).padStart(2, '0'); // Måneder er null-indeksert
+            let year = dateObj.getFullYear();
+            timearray[i].dob = `${day}.${month}.${year}`||"";
         }else{
             timearray[i].dob = "";
         }
