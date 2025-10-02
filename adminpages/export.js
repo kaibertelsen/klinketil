@@ -442,3 +442,16 @@ function findClubbId(){
 }
 
 
+function saveProjectxlsFile(){
+    const projectselector = document.getElementById("projectselector");
+    let proText = projectselector.options[projectselector.selectedIndex].text;
+
+    const dateselector = document.getElementById("dashboarddateselector");
+    let dateText = dateselector.options[dateselector.selectedIndex].text;
+
+    let filename = proText+"-"+dateText;
+
+    var saveddata = exportField(listarray);
+    //kjøre filen gjonnom en export property
+    exportXLS(saveddata,filename);
+}
