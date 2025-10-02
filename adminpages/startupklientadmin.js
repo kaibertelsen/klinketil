@@ -86,3 +86,48 @@ function maketimearrayFromProject(data){
     }
 
 }
+
+function prosjektretur(data,id){
+    //loade en selector (prosjekter)
+    totalprosject = rawdatacleaner(data);
+
+    klientairtable = getAirtableKlientFromProject(totalprosject);
+    const sortlist = sortArrayABC("name",totalprosject);
+    var prosjektgroup = loadProjectgroup(sortlist);
+
+    if(prosjektgroup.length>0){
+        document.getElementById("groupselector").style.display = "block";
+        prosjektgroup.unshift({text:"Alle grupper",value:""});
+        loadselector(document.getElementById("groupselector"),prosjektgroup)
+    }else{
+        document.getElementById("groupselector").style.display = "none";
+    }
+
+    var options = makeOptionsFromProjectlist(sortlist);
+    options.unshift({text:"Alle prosjekter",value:""});
+    loadselector(document.getElementById("projectselector"),options);
+
+
+    //lage total timeliste
+    totaltimerows = makeTotaltimeList(sortlist);
+    
+    //om det er en klient som skal ha team selector last denne
+    loadTeamselectorIfKlient(totaltimerows);
+       
+    //datovelger
+    const selector = document.getElementById("dashboarddateselector");
+    var data =  periodArrayCleaner("dato","dato",selector,totaltimerows);
+
+    //starte listevisning
+    startprojectlist(data,"projectlisttable",true,"dato",true);
+    
+    //hente klientdata
+    getklientData();
+
+    
+    
+}
+
+function loadTeamselectorIfKlient(totaltimerows){
+    console.log("loadTeamselectorIfKlient");
+}
