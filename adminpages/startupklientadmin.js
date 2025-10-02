@@ -128,6 +128,10 @@ function prosjektretur(data,id){
     
 }
 
-function loadTeamselectorIfKlient(totaltimerows){
-    console.log("loadTeamselectorIfKlient");
+function loadTeamselectorIfKlient(data){
+    console.log(getUniqueTeamNames(data));
 }
+
+function getUniqueTeamNames(data) {
+    return [...new Set(data.map(item => item.teamname))];
+  }
