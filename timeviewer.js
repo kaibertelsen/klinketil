@@ -106,5 +106,8 @@ function changeLogoHeader() {
   
     // Sett CSS-bakgrunn i stedet for img.src
     logoElement.style.backgroundImage = `url('${user.teamlogo}')`;
+    logoElement.style.backgroundSize = "contain";   // juster som du vil (cover / contain / auto)
+    logoElement.style.backgroundRepeat = "no-repeat";
+    logoElement.style.backgroundPosition = "center";
   }
 
