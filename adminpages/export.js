@@ -132,7 +132,8 @@ function exportField(data){
         "timenr":"Nr",
         "useremail":"E-post",
         "groupname":"Gruppe",
-        "timeunitvalue":"Antall enheter"
+        "timeunitvalue":"Antall enheter",
+        "teamname":"Team"
 
     };
     
@@ -175,7 +176,7 @@ function findKeysforExportonKlient(data){
     //dob skal inn i eksport
     mergeDobInTimeList(data,totalusers);
 
-    return ["Nr","Dato","Navn","Kommentar", "Gruppe", "Prosjekt", "Timer","Antall enheter","Alder","F.dato","Kontonr","E-post", "Godkjent", "Fakturert", "Person ID"];
+    return ["Nr","Dato","Navn","Kommentar", "Gruppe", "Prosjekt", "Timer","Antall enheter","Team","Alder","F.dato","Kontonr","E-post", "Godkjent", "Fakturert", "Person ID"];
     }else if(kjontrollnr == "b7fc"){
     //BPS
   
