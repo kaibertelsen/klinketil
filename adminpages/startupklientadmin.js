@@ -158,7 +158,7 @@ function getUniqueTeamNames(data) {
   
     // Legg til en standard option
     const defaultOption = document.createElement("option");
-    defaultOption.text = "-- Velg team --";
+    defaultOption.text = "- Alle team -";
     defaultOption.value = "";
     selector.appendChild(defaultOption);
   
