@@ -129,9 +129,49 @@ function prosjektretur(data,id){
 }
 
 function loadTeamselectorIfKlient(data){
-    console.log(getUniqueTeamNames(data));
+    
+    let teamlist = getUniqueTeamNames(data)
+    //sorter alfabetisk
+    teamlist.sort((a, b) => a.localeCompare(b));
+    console.log(teamlist);
+    loadTeamnameinSelector(teamlist);
+
 }
 
 function getUniqueTeamNames(data) {
     return [...new Set(data.map(item => item.teamname))];
   }
+
+  function loadTeamnameinSelector(data) {
+    const selector = document.getElementById("dashboardteamselector");
+    if (!selector) return;
+  
+    // Sjekk om data er tom eller bare består av "0"
+    const onlyZero = data.length === 0 || (data.length === 1 && data[0] === "0");
+    if (onlyZero) {
+      selector.style.display = "none";
+      return;
+    }
+  
+    // Fjern tidligere options
+    selector.innerHTML = "";
+  
+    // Legg til en standard option
+    const defaultOption = document.createElement("option");
+    defaultOption.text = "-- Velg team --";
+    defaultOption.value = "";
+    selector.appendChild(defaultOption);
+  
+    // Legg til alle team
+    data.forEach(team => {
+      const option = document.createElement("option");
+      option.value = team;
+  
+      // Hvis teamnavn er "0", vis "Team ikke tildelt"
+      option.text = (team === "0") ? "Team ikke tildelt" : team;
+  
+      selector.appendChild(option);
+    });
+  }
+  
+  
