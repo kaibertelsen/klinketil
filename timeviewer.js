@@ -106,3 +106,4 @@ function changeLogoHeader() {
         logoImageElement.src = user.teamlogo;
     }
 }
+
