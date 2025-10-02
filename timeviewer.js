@@ -87,23 +87,24 @@ function startTimeViewer(hoursvalue) {
 function changeLogoHeader() {
     const userJson = localStorage.getItem("UserObject");
     if (!userJson) return;
-
+  
     let user;
     try {
-        user = JSON.parse(userJson);
+      user = JSON.parse(userJson);
     } catch (e) {
-        console.error("Kunne ikke parse UserObject fra localStorage:", e);
-        return;
+      console.error("Kunne ikke parse UserObject fra localStorage:", e);
+      return;
     }
-
-    const logoImageElement = document.getElementById("logoimageelement");
-    if (!logoImageElement) {
-        console.warn("Fant ikke logoimageelement i DOM");
-        return;
+  
+    if (!user?.teamlogo) return;
+  
+    const logoElement = document.getElementById("logoimageelement");
+    if (!logoElement) {
+      console.warn("Fant ikke logoimageelement i DOM");
+      return;
     }
-
-    if (user.teamlogo) {
-        logoImageElement.src = user.teamlogo;
-    }
-}
+  
+    // Sett CSS-bakgrunn i stedet for img.src
+    logoElement.style.backgroundImage = `url('${user.teamlogo}')`;
+  }
 
