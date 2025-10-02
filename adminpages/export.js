@@ -449,6 +449,13 @@ function saveProjectxlsFile(){
     const dateselector = document.getElementById("dashboarddateselector");
     let dateText = dateselector.options[dateselector.selectedIndex].text;
 
+    //hvis teamselector er valgt så kan den komme med på navnet
+    const teamselector = document.getElementById("dashboardteamselector");
+    if(teamselector.value != ""){
+        let teamText = teamselector.options[teamselector.selectedIndex].text;
+        proText = proText+"-"+teamText;
+    }
+
     let filename = proText+"-"+dateText;
 
     var saveddata = exportField(listarray);
