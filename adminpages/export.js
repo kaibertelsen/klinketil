@@ -176,11 +176,11 @@ function findKeysforExportonKlient(data){
     //dob skal inn i eksport
     mergeDobInTimeList(data,totalusers);
 
-    return ["Nr","Dato","Navn","Kommentar", "Gruppe", "Prosjekt", "Timer","Antall enheter","Team","Alder","F.dato","Kontonr","E-post", "Godkjent", "Fakturert", "Person ID"];
+    return ["Nr","Dato","Navn","Kommentar", "Gruppe", "Prosjekt", "Timer","Antall enheter","Alder","F.dato","Kontonr","E-post", "Godkjent", "Fakturert", "Person ID"];
     }else if(kjontrollnr == "b7fc"){
     //BPS
   
-    return ["Nr","Dato","Navn","Kommentar","Prosjekt", "Timer","Antall enheter","Alder","F.dato", "Godkjent", "Fakturert", "E-post", "Person ID"];
+    return ["Nr","Dato","Navn","Kommentar","Prosjekt","Team", "Timer","Antall enheter","Alder","F.dato", "Godkjent", "Fakturert", "E-post", "Person ID"];
     }else if(kjontrollnr == "cfbb"){
     //Måløy
     return ["Nr","Dato","Navn","Kommentar","Prosjekt", "Timer","Beløp","Alder", "Godkjent", "Fakturert", "E-post", "Person ID"];
