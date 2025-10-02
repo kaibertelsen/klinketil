@@ -15,7 +15,9 @@ const cdnScripts = [
     "https://kaibertelsen.github.io/klinketil/adminpages/mindeltab.js",
     "https://kaibertelsen.github.io/klinketil/adminpages/export.js",
     "https://kaibertelsen.github.io/klinketil/adminpages/listfunction.js",
-    "https://kaibertelsen.github.io/klinketil/adminpages/mergecontroll.js"
+    "https://kaibertelsen.github.io/klinketil/adminpages/mergecontroll.js",
+    "https://kaibertelsen.github.io/klinketil/adminpages/startupklientadmin.js"
+    
 ];
 
 // Laste inn alle skriptene sekvensielt
