@@ -21,3 +21,27 @@ function companyChange(companyId){
 
 
 }
+
+
+function changeLogoHeader() {
+    const userJson = localStorage.getItem("UserObject");
+    if (!userJson) return;
+
+    let user;
+    try {
+        user = JSON.parse(userJson);
+    } catch (e) {
+        console.error("Kunne ikke parse UserObject fra localStorage:", e);
+        return;
+    }
+
+    const logoImageElement = document.getElementById("logoimageelement");
+    if (!logoImageElement) {
+        console.warn("Fant ikke logoimageelement i DOM");
+        return;
+    }
+
+    if (user.teamlogo) {
+        logoImageElement.src = user.teamlogo;
+    }
+}
