@@ -17,7 +17,7 @@ function maketimearrayFromProject(data){
         const timenr = data.timenr;
         const useremail = data.useremail;
         const userairtable = data.userairtable;
-        //const teamname = data.teamname;
+        const teamname = data.teamname;
         
         // Eksempel på kall til funksjonen
             let controll = checkArrayLengths(data);
@@ -76,8 +76,8 @@ function maketimearrayFromProject(data){
                         timeverdi:timeverdiarray[i],
                         valuenumber:valuenumberarray[i],
                         approval:approvalrarray[i],
-                        userairtable:userairtable[i]
-                        //teamname:teamname[i]
+                        userairtable:userairtable[i],
+                        teamname:teamname[i]
                     });  
         } 
                 return array;
