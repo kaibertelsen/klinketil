@@ -174,4 +174,41 @@ function getUniqueTeamNames(data) {
     });
   }
   
-  
+  function selectorTimelist(){
+   
+    //datovelger
+    var displaylist =  periodArrayCleaner("dato","dato",document.getElementById("dashboarddateselector"),totaltimerows);
+    
+    //gruppevelger
+    if(document.getElementById("groupselector").value == ""){
+        //gruppe er ikke valgt
+    }else{
+        //gruppe er valgt begrens til gruppe
+    displaylist = findAllTimeronGroup(document.getElementById("groupselector").value,displaylist);
+    }
+    
+    //prosjektvelger
+    if(document.getElementById("projectselector").value == ""){
+
+    }else{
+        displaylist = projectArrayCleaner(displaylist,projectselector.value);
+    }
+
+    //teamvelger
+    if(document.getElementById("dashboardteamselector").value == ""){
+        //team er ikke valgt
+    }else{
+        //team er valgt begrens til team
+        displaylist = findAllTimeronTeamname(document.getElementById("dashboardteamselector").value,displaylist);
+    }
+    startprojectlist(displaylist,"projectlisttable",true,"dato",true);
+}
+
+function findAllTimeronTeamname(teamname,array){
+    var newarray = array.filter(item => item.teamname === teamname);
+    return newarray;
+}
+
+document.getElementById("dashboardteamselector").addEventListener("change", (e) => {
+    selectorTimelist();
+});
