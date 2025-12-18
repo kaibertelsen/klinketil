@@ -112,8 +112,5 @@ function changeLogoHeader() {
   }
 
 
-  if(masterklientid == "646f0b32f2471117a0c5b7fc"){
-    //sjekke om det er bergen
-    document.getElementById("targetbutton").style.display = "none";
-}
+
 
