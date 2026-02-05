@@ -7,9 +7,9 @@ function saveVisitorInfo(visitor) {
     // Minimal normalisering / defaults
     const payload = {
         name: visitor?.name || "",
-        phone: visitor?.phone || "",
+        phone: visitor?.tlf || "",
         email: visitor?.email || "",
-        companies: visitor?.companies || visitor?.company || "",
+        companies: visitor?.klientname || "",
         orgnr: visitor?.orgnr || visitor?.orgNr || "",
         metadata: (visitor?.metadata && typeof visitor.metadata === "object") ? visitor.metadata : {},
         updatedAt: new Date().toISOString()
@@ -19,8 +19,8 @@ function saveVisitorInfo(visitor) {
     return payload;
 }
 
-console.log("app startup test",vicitorMember);
-//saveVisitorInfo(vicitorMember);
+//console.log("app startup test",vicitorMember);
+saveVisitorInfo(vicitorMember);
 
 
 document.addEventListener("visibilitychange", function() {
