@@ -1,4 +1,9 @@
 function startUp(){
+
+console.log("app startup test",vicitorMember);
+
+
+
 //hente user object
 
 // loade alle leverandører JSON på klient
