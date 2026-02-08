@@ -1,4 +1,5 @@
 function saveVisitorInfo(visitor) {
+    /*
     const clientId = window.bbConfig?.clientId;
     if (!clientId) throw new Error("Missing bbConfig.clientId");
     
@@ -17,6 +18,7 @@ function saveVisitorInfo(visitor) {
     
     localStorage.setItem(key, JSON.stringify(payload));
     return payload;
+    */
 }
 
 //console.log("app startup test",vicitorMember);
