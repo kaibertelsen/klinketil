@@ -23,8 +23,8 @@ const cdnScripts = [
 
 // Hardkodede bruker-IDer med begrenset tilgang (kun Timeføring-fanen)
 const limitedAccessUsers = [
-    "647725ae6db4c30002fb5ed1",   // Navn/beskrivelse
-    "64ad93e366648b00023aedf2"  // Navn/beskrivelse
+    "675dd99e1246630002dcd0dc",   // Navn/beskrivelse
+    "67d5a537ad67007824cdd6bc"  // Navn/beskrivelse
 ];
 
 // Kalles fra Webflow-scriptet med member.id etter innlogging
